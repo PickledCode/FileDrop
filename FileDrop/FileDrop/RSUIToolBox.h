@@ -10,7 +10,7 @@
 
 @interface RSUIToolBox : NSObject
 
-+(TUIFont*)fontOfSize:(CGFloat)fontSize;
-+(TUIFont*)boldFontOfSize:(CGFloat)fontSize;
++(NSFont*)fontOfSize:(CGFloat)fontSize;
++(NSFont*)boldFontOfSize:(CGFloat)fontSize;
 
 @end

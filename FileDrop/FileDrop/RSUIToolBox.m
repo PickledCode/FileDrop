@@ -10,11 +10,11 @@
 
 @implementation RSUIToolBox
 
-+(TUIFont*)fontOfSize:(CGFloat)fontSize {
-    return [TUIFont fontWithName:@"HelveticaNeue" size:fontSize];
++(NSFont*)fontOfSize:(CGFloat)fontSize {
+    return [NSFont fontWithName:@"HelveticaNeue" size:fontSize];
 }
-+(TUIFont*)boldFontOfSize:(CGFloat)fontSize {
-    return [TUIFont fontWithName:@"HelveticaNeue-Bold" size:fontSize];
++(NSFont*)boldFontOfSize:(CGFloat)fontSize {
+    return [NSFont fontWithName:@"HelveticaNeue-Bold" size:fontSize];
 }
 
 @end
