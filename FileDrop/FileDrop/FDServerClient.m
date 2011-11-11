@@ -81,6 +81,7 @@
                 NSLog(@"KBProxyServer ERROR: %d: %@", [dCode intValue], dMsg);
                 if ([dCode intValue] == 1) {
                     // Auth token in use
+                    [fileManager.delegate fileManagerErrorTokenInvalid:fileManager];
                 }
                 
             } else if ([dType isEqualToString:@"data"]) {
