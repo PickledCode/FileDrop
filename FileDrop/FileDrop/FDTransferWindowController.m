@@ -9,10 +9,16 @@
 #import "FDTransferWindowController.h"
 #import "NSError+FDAdditions.h"
 
+static NSString* const kMainCellIdentifier = @"MainCell";
+static NSString* const kGroupCellIdentifier = @"GroupCell";
+static CGFloat const kMainCellHeight = 60.0;
+static CGFloat const kGroupCellHeight = 17.0;
+
 @implementation FDTransferWindowController {
     FDFileManager *fileManager;
     FDTokenWindowController *tokenWindowController;
 }
+@synthesize tableContent;
 
 + (id)transferWindowControllerWithTitle:(NSString*)title
 {
@@ -24,8 +30,7 @@
 - (void)windowDidLoad
 {
     [super windowDidLoad];
-    
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    [self reloadContent];
 }
 
 - (void)showWindow:(id)sender
@@ -43,7 +48,6 @@
     [NSApp endSheet:tokenWindowController.window];
     [tokenWindowController.window orderOut:nil];
     fileManager = [[FDFileManager alloc] initWithToken:token delegate:self];
-    [self fileManagerErrorTokenInvalid:nil];
 }
 
 - (void)tokenWindowControllerClickedCancel:(FDTokenWindowController*)controller
@@ -71,4 +75,36 @@
     [self.window orderOut:nil];
 }
 
+#pragma mark - NSTableViewDataSource
+
+- (void)reloadContent
+{
+    NSInteger sections = [fileManager numberOfSections];
+    NSMutableArray *content = [NSMutableArray arrayWithCapacity:sections];
+    for (NSInteger i = 0; i < sections; i++) {
+        [content addObject:[fileManager titleForSection:i]];
+        [content addObjectsFromArray:[fileManager activeFilesInSection:i]];
+    }
+    self.tableContent = content;
+}
+
+- (BOOL)tableView:(NSTableView *)tableView isGroupRow:(NSInteger)row {
+    id entity = [self.tableContent objectAtIndex:row];
+    return [entity isKindOfClass:[NSString class]];
+}
+
+- (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+    id entity = [self.tableContent objectAtIndex:row];
+    if ([entity isKindOfClass:[NSString class]]) {
+        NSTextField *textField = [tableView makeViewWithIdentifier:kGroupCellIdentifier owner:self];
+        [textField setStringValue:entity];
+        return textField;
+    } else {
+        return [tableView makeViewWithIdentifier:kMainCellIdentifier owner:self];
+    }
+}    
+
+- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
+    return ([[self.tableContent objectAtIndex:row] isKindOfClass:[NSString class]]) ? kGroupCellHeight : kMainCellHeight;
+}
 @end

@@ -12,9 +12,11 @@
     NSString *fileID;
     NSString *localPath;
     NSData *fileHash;
+    NSString *filename;
     
     BOOL isPaused;
     BOOL isAccepted;
+    BOOL progressIndeterminate;
     
     NSUInteger bytesTransfered;
     NSUInteger bytesTotal;
@@ -22,15 +24,19 @@
     NSImage *icon;
 }
 
-@property (readonly) NSString *fileID;
-@property (readonly) NSString *localPath;
+@property (nonatomic, copy, readonly) NSString *fileID;
+@property (nonatomic, copy, readonly) NSString *localPath;
 
-@property (assign) BOOL isPaused;
-@property (assign) BOOL isAccepted;
+@property (nonatomic, assign) BOOL isPaused;
+@property (nonatomic, assign) BOOL isAccepted;
 
-@property (assign) NSUInteger bytesTransfered;
-@property (readonly) NSUInteger bytesTotal;
+@property (nonatomic, assign) NSUInteger bytesTransfered;
+@property (nonatomic, readonly) NSUInteger bytesTotal;
 
-@property (retain) NSImage *icon;
+@property (nonatomic, retain, readonly) NSImage *icon;
 
+#pragma mark - Bindings Support
+// Don't need to touch these, these will be set by the custom setters
+@property (nonatomic, copy, readonly) NSString *filename;
+@property (nonatomic, assign) BOOL progressIndeterminate;
 @end

@@ -10,21 +10,27 @@
 
 @implementation FDFile
 
-@synthesize fileID, localPath, isPaused, isAccepted, bytesTransfered, bytesTotal, icon;
+@synthesize fileID, localPath, isPaused, isAccepted, bytesTransfered, bytesTotal, icon, progressIndeterminate, filename;
+
+- (id)init
+{
+    if ((self = [super init])) {
+        self.progressIndeterminate = YES;
+    }
+    return self;
+}
 
 -(CGFloat)progress {
     return (bytesTransfered / bytesTotal);
 }
 
-- (void)setLocalPath:(NSString *)path
+- (void)setIsAccepted:(BOOL)accepted
 {
-    if (localPath != path) {
-        [self willChangeValueForKey:@"localPath"];
-        localPath = path;
-        [self didChangeValueForKey:@"localPath"];
-        NSString *extension = [[path lastPathComponent] pathExtension];
-        NSWorkspace *ws = [NSWorkspace sharedWorkspace];
-        self.icon = [ws iconForFileType:extension];
+    if (isAccepted != accepted) {
+        [self willChangeValueForKey:@"isAccepted"];
+        isAccepted = accepted;
+        [self didChangeValueForKey:@"isAccepted"];
+        self.progressIndeterminate = !isAccepted;
     }
 }
 
