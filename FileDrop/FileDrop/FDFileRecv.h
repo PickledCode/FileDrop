@@ -13,5 +13,6 @@
 }
 
 -(id)initWithMeta:(NSDictionary*)dict;
+-(void)acceptToLocalPath:(NSString*)lp;
 
 @end

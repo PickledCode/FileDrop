@@ -10,15 +10,8 @@
 
 @implementation FDFile
 
-@synthesize localPath, isPaused, isAccepted, bytesTransfered, bytesTotal;
+@synthesize fileID, localPath, isPaused, isAccepted, bytesTransfered, bytesTotal;
 
--(id)initWithLocalPath:(NSString*)p {
-    self = [super init];
-    if (self) {
-        localPath = [p copy];
-    }
-    return self;
-}
 
 -(CGFloat)progress {
     return (bytesTransfered / bytesTotal);

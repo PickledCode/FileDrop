@@ -25,4 +25,6 @@
 
 -(id)initWithToken:(NSString*)token andFileManager:(FDFileManager*)fm;
 
+@property (readonly) RSSocket *socket;
+
 @end

@@ -10,11 +10,15 @@
 #import "KBEncodeObjC.h"
 #import "KBDecodeObjC.h"
 #import "RSSocket.h"
+#import "FDFile.h"
 
 @interface KBPacket : NSObject
 
 +(NSData*)dataWithObject:(NSObject*)object;
 +(void)writeObject:(NSObject*)object toSocket:(RSSocket*)socket;
+
 +(void)writeAuth:(NSString*)token toSocket:(RSSocket*)socket;
++(void)writeFileBytes:(FDFile*)file toSocket:(RSSocket*)socket;
++(void)writeDeclineFile:(FDFile*)file toSocket:(RSSocket*)socket;
 
 @end

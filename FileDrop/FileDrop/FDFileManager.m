@@ -38,17 +38,27 @@
     
 }
 
--(void)acceptFile:(FDFileRecv*)file {
-    if ([filesSend containsObject:file] && [[file localPath] length] > 0) {
-        file.isAccepted = YES;
+-(void)acceptFile:(FDFileRecv*)file WithPath:(NSString *)path {
+    if (file.isAccepted && [[file localPath] isEqualToString:path]) {
+        return;
+    } else if (file.isAccepted) {
+        NSLog(@"Uh, confused. File is already accepted but path isn't the same");
+        return;
     }
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+       // Resume file 
+        [KBPacket writeFileBytes:file toSocket:client.socket];
+    }
+    [file acceptToLocalPath:path];
 }
 -(void)declineFile:(FDFileRecv*)file {
     if ([filesRecv containsObject:file]) {
-        
-    } else if ([filesSend containsObject:file]) {
-        
+        [delegate fileManager:self willRemoveFile:file inSection:FDFM_FILERECV_SECTION];
+        [filesRecv removeObject:file];
+        [delegate fileManager:self didRemoveFile:file inSection:FDFM_FILERECV_SECTION];
     }
+    [KBPacket writeDeclineFile:file toSocket:client.socket];
 }
 
 

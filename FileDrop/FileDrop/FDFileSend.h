@@ -7,7 +7,10 @@
 //
 
 #import "FDFile.h"
+#import "FDFunctions.h"
 
 @interface FDFileSend : FDFile
+
+-(id)initWithLocalPath:(NSString*)p;
 
 @end

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface FDFile : NSObject {
+    NSString *fileID;
     NSString *localPath;
     NSData *fileHash;
     
@@ -19,10 +20,9 @@
     NSUInteger bytesTotal;
 }
 
--(id)initWithLocalPath:(NSString*)p;
-
 -(CGFloat)progress;
 
+@property (readonly) NSString *fileID;
 @property (readonly) NSString *localPath;
 
 @property (assign) BOOL isPaused;

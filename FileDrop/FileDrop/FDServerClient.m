@@ -10,6 +10,8 @@
 
 @implementation FDServerClient
 
+@synthesize socket;
+
 -(id)initWithToken:(NSString*)tok andFileManager:(FDFileManager *)fm {
     self = [super init];
     if (self) {
@@ -56,10 +58,21 @@
                 // Action and possible start info
                 NSString *dAction = [dict objectForKey:@"action"];
                 
+                if ([dAction isEqualToString:@"connected"]) {
+                    
+                } else if ([dAction isEqualToString:@"disconnected"]) {
+                    
+                }
+                
             } else if ([dType isEqualToString:@"error"]) {
                 // Message and error code
                 NSString *dMsg = [dict objectForKey:@"msg"];
                 NSNumber *dCode = [dict objectForKey:@"code"];
+                
+                NSLog(@"KBProxyServer ERROR: %d: %@", [dCode intValue], dMsg);
+                if ([dCode intValue] == 1) {
+                    // Auth token in use
+                }
                 
             } else if ([dType isEqualToString:@"data"]) {
                 

@@ -15,8 +15,15 @@
     if (self) {
         isAccepted = NO;
         _meta = [dict copy];
+        
+        fileID = [_meta objectForKey:@"id"];
     }
     return self;
+}
+
+-(NSString*)localPath {
+    // Return original file name if not accepted (saved)
+    return isAccepted == NO ? [_meta objectForKey:@"name"] : localPath;
 }
 
 -(void)acceptToLocalPath:(NSString*)lp {

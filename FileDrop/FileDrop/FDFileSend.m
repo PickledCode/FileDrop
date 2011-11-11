@@ -10,4 +10,13 @@
 
 @implementation FDFileSend
 
+-(id)initWithLocalPath:(NSString*)p {
+    self = [super init];
+    if (self) {
+        localPath = [p copy];
+        fileID = randomString();
+    }
+    return self;
+}
+
 @end
