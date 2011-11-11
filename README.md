@@ -29,14 +29,16 @@ Although confusing at first, FDFileManager pretends to manage sections itself. S
 
 Within each "data" field of a given KB object, here are some examples
 
-    ["type": "file", "id": <STRING_ID>, "method": <STRING_METHOD>, …]
+    ["type": "file", "id": <STRING_ID>, "action": <STRING_METHOD>, …]
 
 The ID is a string, generally randomized by the sender, that will reference this specific file transfer. 
 
 
-Here are possible methods you will see:
+Here are possible actions you will see:
 
 - "init": Creating a new transfer
+- "update": Tell a client where to begin sending a file that is not accepted *yet*
 - "accept": Accepting a new transfer that was just init'd
 - "cancel": Canceling a transfer that has already been accept'd
 - "data": Data for a file that has been accepted and is downloading
+
