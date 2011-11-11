@@ -19,6 +19,7 @@
     RSSocket *socket;
     NSThread *readThread;
     NSThread *uploadThread;
+    BOOL isConnected;
     
     NSString *token;
 }
