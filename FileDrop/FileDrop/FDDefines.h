@@ -12,4 +12,7 @@
 #define FDFM_FILERECV_SECTION 0
 #define FDFM_FILESEND_SECTION 1
 
+#define FD_SERVER_HOST @"127.0.0.1"
+#define FD_SERVER_PORT 9000
+
 #endif

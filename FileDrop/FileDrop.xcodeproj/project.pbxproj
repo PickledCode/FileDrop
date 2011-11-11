@@ -31,6 +31,9 @@
 		2BEAFEA8146B386000F791BF /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BEAFEA2146B386000F791BF /* pause.png */; };
 		2BEAFEA9146B386000F791BF /* resume_hover.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BEAFEA3146B386000F791BF /* resume_hover.png */; };
 		2BEAFEAA146B386000F791BF /* resume.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BEAFEA4146B386000F791BF /* resume.png */; };
+		2BEAFED5146CA6A500F791BF /* RSSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BEAFED4146CA6A500F791BF /* RSSocket.m */; };
+		2BEAFEDD146CA7A100F791BF /* FDServerClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BEAFEDC146CA7A100F791BF /* FDServerClient.m */; };
+		2BEAFEE0146CA91B00F791BF /* KBPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BEAFEDF146CA91B00F791BF /* KBPacket.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -90,6 +93,12 @@
 		2BEAFEA4146B386000F791BF /* resume.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resume.png; sourceTree = "<group>"; };
 		2BEAFED0146CA19F00F791BF /* FDFileDrop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDFileDrop.h; sourceTree = "<group>"; };
 		2BEAFED1146CA20000F791BF /* FDDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDDefines.h; sourceTree = "<group>"; };
+		2BEAFED3146CA6A500F791BF /* RSSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSocket.h; sourceTree = "<group>"; };
+		2BEAFED4146CA6A500F791BF /* RSSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSocket.m; sourceTree = "<group>"; };
+		2BEAFEDB146CA7A100F791BF /* FDServerClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDServerClient.h; sourceTree = "<group>"; };
+		2BEAFEDC146CA7A100F791BF /* FDServerClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDServerClient.m; sourceTree = "<group>"; };
+		2BEAFEDE146CA91B00F791BF /* KBPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KBPacket.h; sourceTree = "<group>"; };
+		2BEAFEDF146CA91B00F791BF /* KBPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KBPacket.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +158,7 @@
 			children = (
 				2BEAFDA51469F1B500F791BF /* Application Delegates */,
 				2BEAFE88146B18A800F791BF /* Helpers */,
+				2BEAFED2146CA66C00F791BF /* Communication */,
 				2BEAFE8F146B288B00F791BF /* Objects */,
 				2BEAFE84146B13D900F791BF /* Main Table */,
 				2BEAFEAB146B3C0A00F791BF /* Other UI */,
@@ -269,6 +279,19 @@
 			path = ../../../../twitter/twui/lib;
 			sourceTree = "<group>";
 		};
+		2BEAFED2146CA66C00F791BF /* Communication */ = {
+			isa = PBXGroup;
+			children = (
+				2BEAFED3146CA6A500F791BF /* RSSocket.h */,
+				2BEAFED4146CA6A500F791BF /* RSSocket.m */,
+				2BEAFEDE146CA91B00F791BF /* KBPacket.h */,
+				2BEAFEDF146CA91B00F791BF /* KBPacket.m */,
+				2BEAFEDB146CA7A100F791BF /* FDServerClient.h */,
+				2BEAFEDC146CA7A100F791BF /* FDServerClient.m */,
+			);
+			name = Communication;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -352,6 +375,9 @@
 				2BEAFE95146B29E100F791BF /* FDFileManager.m in Sources */,
 				2BEAFE98146B2C1200F791BF /* FDFileRecv.m in Sources */,
 				2BEAFE9B146B2C2200F791BF /* FDFileSend.m in Sources */,
+				2BEAFED5146CA6A500F791BF /* RSSocket.m in Sources */,
+				2BEAFEDD146CA7A100F791BF /* FDServerClient.m in Sources */,
+				2BEAFEE0146CA91B00F791BF /* KBPacket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

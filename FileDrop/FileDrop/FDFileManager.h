@@ -11,6 +11,7 @@
 #import "FDFileRecv.h"
 #import "FDFileSend.h"
 #import "FDDefines.h"
+#import "FDServerClient.h"
 
 @class FDFileManager, FDFile;
 
@@ -24,7 +25,8 @@
 
 
 @interface FDFileManager : NSObject {
-    NSString *connToken;
+    FDServerClient *client;
+    
     NSMutableArray *filesRecv;
     NSMutableArray *filesSend;
     
@@ -34,17 +36,17 @@
 -(id)initWithToken:(NSString*)token;
 
 
--(NSUInteger)numberOfSections;
--(NSString*)titleForSection:(NSUInteger)section;
--(NSArray*)filesInSection:(NSUInteger)section;
--(FDFile*)fileInSection:(NSUInteger)section atIndex:(NSUInteger)ind;
-
-
 -(void)pauseFile:(FDFile*)file;
 -(void)resumeFile:(FDFile*)file;
 
 -(void)acceptFile:(FDFileRecv*)file;
 -(void)declineFile:(FDFileRecv*)file;
+
+
+-(NSUInteger)numberOfSections;
+-(NSString*)titleForSection:(NSUInteger)section;
+-(NSArray*)filesInSection:(NSUInteger)section;
+-(FDFile*)fileInSection:(NSUInteger)section atIndex:(NSUInteger)ind;
 
 
 @property (assign) id<FDFileManagerDelegate> delegate;

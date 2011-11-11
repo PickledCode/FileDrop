@@ -16,11 +16,40 @@
 -(id)initWithToken:(NSString *)token {
     self = [super init];
     if (self) {
+        client = [[FDServerClient alloc] initWithToken:token];
+        if (!client) {
+            [super dealloc];
+            return nil;
+        }
         
+        filesRecv = [NSMutableArray new];
+        filesSend = [NSMutableArray new];
     }
     return self;
 }
+-(void)dealloc {
+    [filesRecv release];
+    [filesSend release];
+    delegate = nil;
+    [super dealloc];
+}
 
+#pragma mark -
+#pragma mark File manipulation
+
+-(void)pauseFile:(FDFile*)file {
+    
+}
+-(void)resumeFile:(FDFile*)file {
+    
+}
+
+-(void)acceptFile:(FDFileRecv*)file {
+    
+}
+-(void)declineFile:(FDFileRecv*)file {
+    
+}
 
 
 #pragma mark -

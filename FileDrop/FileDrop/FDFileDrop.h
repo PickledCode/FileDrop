@@ -15,5 +15,7 @@
 #import "FDFile.h"
 #import "FDFileRecv.h"
 #import "FDFileSend.h"
+#import "KBPacket.h"
+#import "RSSocket.h"
 
 #endif
