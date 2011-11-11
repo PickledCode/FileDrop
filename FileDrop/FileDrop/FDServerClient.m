@@ -7,6 +7,7 @@
 //
 
 #import "FDServerClient.h"
+#import "FDFileManager.h"
 
 @implementation FDServerClient
 
@@ -98,7 +99,17 @@
         }
         
         while (![uploadThread isCancelled]) {
+            NSArray *files = [fileManager activeFilesInSection:FDFM_FILESEND_SECTION];
+            if ([files count] < 1) {
+                [NSThread sleepForTimeInterval:0.02];
+            }
             
+            for (FDFile *file in files) {
+                NSFileHandle *handle = [NSFileHandle fileHandleForReadingAtPath:file.localPath];
+                [handle seekToFileOffset:file.bytesTransfered];
+                NSData *data = [handle readDataOfLength:FD_UPLOAD_BUFFER];
+                [KBPacket writeData:data forFile:file toSocket:socket];
+            }
         }
     }
 }

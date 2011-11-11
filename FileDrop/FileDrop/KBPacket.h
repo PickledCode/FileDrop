@@ -20,5 +20,6 @@
 +(void)writeAuth:(NSString*)token toSocket:(RSSocket*)socket;
 +(void)writeFileBytes:(FDFile*)file toSocket:(RSSocket*)socket;
 +(void)writeDeclineFile:(FDFile*)file toSocket:(RSSocket*)socket;
++(void)writeData:(NSData*)data forFile:(FDFile*)file toSocket:(RSSocket*)socket;
 
 @end

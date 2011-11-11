@@ -97,6 +97,16 @@
     }
     return nil;
 }
+-(NSArray*)activeFilesInSection:(NSUInteger)section {
+    NSMutableArray *active = [NSMutableArray new];
+    NSArray *objs = [self filesInSection:section];
+    for (FDFile *file in objs) {
+        if (file.isAccepted && !file.isPaused) {
+            [active addObject:file];
+        }
+    }
+    return active;
+}
 -(FDFile*)fileInSection:(NSUInteger)section atIndex:(NSUInteger)ind {
     return [[self filesInSection:section] objectAtIndex:ind];
 }

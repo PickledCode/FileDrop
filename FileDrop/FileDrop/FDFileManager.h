@@ -53,6 +53,7 @@
 -(NSUInteger)numberOfSections;
 -(NSString*)titleForSection:(NSUInteger)section;
 -(NSArray*)filesInSection:(NSUInteger)section;
+-(NSArray*)activeFilesInSection:(NSUInteger)section;
 -(FDFile*)fileInSection:(NSUInteger)section atIndex:(NSUInteger)ind;
 
 

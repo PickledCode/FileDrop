@@ -17,6 +17,7 @@
 #define FD_SERVER_HOST @"127.0.0.1"
 #define FD_SERVER_PORT 9000
 
+#define FD_UPLOAD_BUFFER (1024*5)
 
 #define FD_PACKET_TYPE_INIT @"init"
 #define FD_PACKET_TYPE_CANC @"cancel"

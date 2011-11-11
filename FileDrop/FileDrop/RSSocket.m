@@ -55,11 +55,13 @@
     if (self) {
         sockfd = fd;
         isOpen = YES;
+        writeLock = [NSRecursiveLock new];
     }
     return self;
 }
 
 -(void)dealloc {
+    [writeLock unlock];
 	[self close];
 }
 
@@ -114,6 +116,7 @@
 }
 -(BOOL)writeData:(NSData*)d {
     if (![self isOpen]) { return NO; }
+    [writeLock lock];
     int written = 0;
     const char *bytes = [d bytes];
     while (written < [d length]) {
@@ -122,10 +125,12 @@
         ssize_t add = send(sockfd, &bytes[written], needsToWrite, 0);
         if (add < 0) {
             [self close];
+            [writeLock unlock];
             return NO;
         }
         written += add;
     }
+    [writeLock unlock];
     return YES;
 }
 

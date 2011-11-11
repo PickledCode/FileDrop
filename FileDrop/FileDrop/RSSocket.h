@@ -27,6 +27,8 @@
     
     id<RSSocketDelegate> delegate;
     NSThread *delegateThread;
+    
+    NSRecursiveLock *writeLock;
 }
 
 -(id)initWithHost:(NSString*)remHost port:(int)port;
