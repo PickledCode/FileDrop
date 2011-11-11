@@ -17,6 +17,7 @@
     self = [super init];
     if (self) {
         fileManager = fm;
+        isConnected = NO;
         
         socket = [[RSSocket alloc] initWithHost:FD_SERVER_HOST port:FD_SERVER_PORT];
         if (!socket) {
@@ -68,9 +69,11 @@
                 NSString *dAction = [dict objectForKey:@"action"];
                 
                 if ([dAction isEqualToString:@"connected"]) {
-                    
+                    //[uploadThread start];
+                    isConnected = YES;
                 } else if ([dAction isEqualToString:@"disconnected"]) {
-                    
+                    [uploadThread cancel];
+                    isConnected = NO;
                 }
                 
             } else if ([dType isEqualToString:@"error"]) {
@@ -102,7 +105,7 @@
         while (![uploadThread isCancelled]) {
             NSArray *files = [fileManager activeFilesInSection:FDFM_FILESEND_SECTION];
             if ([files count] < 1) {
-                [NSThread sleepForTimeInterval:0.02];
+                [NSThread sleepForTimeInterval:0.08];
             }
             
             for (FDFile *file in files) {
