@@ -9,8 +9,10 @@
 /* Begin PBXBuildFile section */
 		0339EFA8146DC41200D236B4 /* FDTransferWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0339EFA7146DC41200D236B4 /* FDTransferWindowController.m */; };
 		0339EFAC146DC45800D236B4 /* FDTokenWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0339EFAB146DC45800D236B4 /* FDTokenWindowController.m */; };
-		0339EFAE146DC48D00D236B4 /* FDTransferWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0339EFAD146DC48D00D236B4 /* FDTransferWindowController.xib */; };
+		0339EFAE146DC48D00D236B4 /* FDTokenWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0339EFAD146DC48D00D236B4 /* FDTokenWindowController.xib */; };
 		0339EFB2146DCC7B00D236B4 /* NSError+FDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0339EFB1146DCC7B00D236B4 /* NSError+FDAdditions.m */; };
+		0339EFC4146DCDAB00D236B4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0339EFC3146DCDAB00D236B4 /* Localizable.strings */; };
+		0339EFC7146DCFAF00D236B4 /* FDTransferWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0339EFC5146DCFAF00D236B4 /* FDTransferWindowController.xib */; };
 		2BAE845C146DA4E300E60748 /* FDFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAE845B146DA4E300E60748 /* FDFunctions.m */; };
 		2BAE845E146DA91E00E60748 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BAE845D146DA91E00E60748 /* CoreFoundation.framework */; };
 		2BEAFD641469E4E600F791BF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BEAFD631469E4E600F791BF /* Cocoa.framework */; };
@@ -58,9 +60,11 @@
 		0339EFA7146DC41200D236B4 /* FDTransferWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDTransferWindowController.m; sourceTree = "<group>"; };
 		0339EFAA146DC45800D236B4 /* FDTokenWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDTokenWindowController.h; sourceTree = "<group>"; };
 		0339EFAB146DC45800D236B4 /* FDTokenWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDTokenWindowController.m; sourceTree = "<group>"; };
-		0339EFAD146DC48D00D236B4 /* FDTransferWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FDTransferWindowController.xib; sourceTree = "<group>"; };
+		0339EFAD146DC48D00D236B4 /* FDTokenWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FDTokenWindowController.xib; sourceTree = "<group>"; };
 		0339EFB0146DCC7B00D236B4 /* NSError+FDAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+FDAdditions.h"; sourceTree = "<group>"; };
 		0339EFB1146DCC7B00D236B4 /* NSError+FDAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+FDAdditions.m"; sourceTree = "<group>"; };
+		0339EFC3146DCDAB00D236B4 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		0339EFC6146DCFAF00D236B4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FDTransferWindowController.xib; sourceTree = "<group>"; };
 		2BAE845A146DA4E300E60748 /* FDFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDFunctions.h; sourceTree = "<group>"; };
 		2BAE845B146DA4E300E60748 /* FDFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDFunctions.m; sourceTree = "<group>"; };
 		2BAE845D146DA91E00E60748 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
@@ -203,6 +207,7 @@
 				2BEAFD6F1469E4E600F791BF /* main.m */,
 				2BEAFD711469E4E600F791BF /* FileDrop-Prefix.pch */,
 				2BEAFD721469E4E600F791BF /* Credits.rtf */,
+				0339EFC3146DCDAB00D236B4 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -241,7 +246,8 @@
 				0339EFA7146DC41200D236B4 /* FDTransferWindowController.m */,
 				0339EFAA146DC45800D236B4 /* FDTokenWindowController.h */,
 				0339EFAB146DC45800D236B4 /* FDTokenWindowController.m */,
-				0339EFAD146DC48D00D236B4 /* FDTransferWindowController.xib */,
+				0339EFAD146DC48D00D236B4 /* FDTokenWindowController.xib */,
+				0339EFC5146DCFAF00D236B4 /* FDTransferWindowController.xib */,
 			);
 			name = "Main Table";
 			sourceTree = "<group>";
@@ -383,7 +389,9 @@
 				2BEAFEA8146B386000F791BF /* pause.png in Resources */,
 				2BEAFEA9146B386000F791BF /* resume_hover.png in Resources */,
 				2BEAFEAA146B386000F791BF /* resume.png in Resources */,
-				0339EFAE146DC48D00D236B4 /* FDTransferWindowController.xib in Resources */,
+				0339EFAE146DC48D00D236B4 /* FDTokenWindowController.xib in Resources */,
+				0339EFC4146DCDAB00D236B4 /* Localizable.strings in Resources */,
+				0339EFC7146DCFAF00D236B4 /* FDTransferWindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +426,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		0339EFC5146DCFAF00D236B4 /* FDTransferWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0339EFC6146DCFAF00D236B4 /* en */,
+			);
+			name = FDTransferWindowController.xib;
+			sourceTree = "<group>";
+		};
 		2BEAFD6C1469E4E600F791BF /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

@@ -7,16 +7,22 @@
 //
 
 #import "FDAppDelegate.h"
+#import "FDTransferWindowController.h"
 
-@implementation FDAppDelegate
+@implementation FDAppDelegate {
+    FDTransferWindowController *transfer;
+}
 
 @synthesize window = _window;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    FDFileManager *fm = [[FDFileManager alloc] initWithToken:@"test"];
+    FDFileManager *fm = [[FDFileManager alloc] initWithToken:@"test" delegate:nil];
     NSLog(@"FM: %@", fm);
     [fm sendFileWithPath:@"/Users/ryansullivan/Desktop/FileDrop.zip"];
+    
+    transfer = [FDTransferWindowController transferWindowControllerWithTitle:@"Some window title"];
+    [transfer showWindow:nil];
 }
 
 @end

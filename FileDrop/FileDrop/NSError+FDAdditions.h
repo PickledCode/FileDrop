@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface NSError (FDAdditions)
-
++ (NSError*)genericErrorWithDescription:(NSString*)description recoveryText:(NSString*)recovery;
 @end

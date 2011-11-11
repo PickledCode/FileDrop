@@ -11,6 +11,6 @@
 #import "FDFileManager.h"
 
 @interface FDTransferWindowController : NSWindowController <FDTokenWindowControllerDelegate, FDFileManagerDelegate>
-
++ (id)transferWindowControllerWithTitle:(NSString*)title;
 @end
 

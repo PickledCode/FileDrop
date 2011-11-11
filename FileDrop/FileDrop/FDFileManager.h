@@ -35,7 +35,7 @@
     NSMutableArray *filesRecv;
     NSMutableArray *filesSend;
     
-    __weak id<FDFileManagerDelegate> delegate;
+    __unsafe_unretained id<FDFileManagerDelegate> delegate;
 }
 
 -(id)initWithToken:(NSString*)token delegate:(id<FDFileManagerDelegate>)aDelegate;
@@ -57,6 +57,6 @@
 -(FDFile*)fileInSection:(NSUInteger)section atIndex:(NSUInteger)ind;
 
 
-@property (weak) id<FDFileManagerDelegate> delegate;
+@property (unsafe_unretained) id<FDFileManagerDelegate> delegate;
 
 @end

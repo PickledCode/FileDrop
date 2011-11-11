@@ -8,6 +8,14 @@
 
 #import "NSError+FDAdditions.h"
 
-@implementation NSError (FDAdditions)
+static NSString* const kGenericErrorDomain = @"FDGenericErrorDomain";
+static NSInteger const kGenericErrorCode = 9999;
 
+@implementation NSError (FDAdditions)
++ (NSError*)genericErrorWithDescription:(NSString*)description recoveryText:(NSString*)recovery
+{
+    NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:description, NSLocalizedDescriptionKey, recovery, NSLocalizedRecoverySuggestionErrorKey, nil];
+    return [NSError errorWithDomain:kGenericErrorDomain code:kGenericErrorCode userInfo:userInfo];
+    
+}
 @end

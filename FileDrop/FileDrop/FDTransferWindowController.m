@@ -7,20 +7,18 @@
 //
 
 #import "FDTransferWindowController.h"
+#import "NSError+FDAdditions.h"
 
 @implementation FDTransferWindowController {
     FDFileManager *fileManager;
     FDTokenWindowController *tokenWindowController;
 }
 
-- (id)initWithWindow:(NSWindow *)window
++ (id)transferWindowControllerWithTitle:(NSString*)title
 {
-    self = [super initWithWindow:window];
-    if (self) {
-        // Initialization code here.
-    }
-    
-    return self;
+    FDTransferWindowController *controller = [[FDTransferWindowController alloc] initWithWindowNibName:NSStringFromClass([self class])];
+    controller.window.title = title;
+    return controller;
 }
 
 - (void)windowDidLoad
@@ -45,19 +43,32 @@
     [NSApp endSheet:tokenWindowController.window];
     [tokenWindowController.window orderOut:nil];
     fileManager = [[FDFileManager alloc] initWithToken:token delegate:self];
+    [self fileManagerErrorTokenInvalid:nil];
 }
 
 - (void)tokenWindowControllerClickedCancel:(FDTokenWindowController*)controller
 {
     [NSApp endSheet:tokenWindowController.window];
     [tokenWindowController.window orderOut:nil];
+    [self.window orderOut:nil];
 }
 
 #pragma mark - FDFileManagerDelegate
 
--(void)fileManagerErrorTokenInvalid:(FDFileManager*)fm
+- (void)fileManagerErrorTokenInvalid:(FDFileManager*)fm
 {
+    [NSApp endSheet:tokenWindowController.window];
+    [tokenWindowController.window orderOut:nil];
+    NSError *error = [NSError genericErrorWithDescription:NSLocalizedString(@"FDInvalidTokenErrorDescription", nil) recoveryText:NSLocalizedString(@"FDInvalidTokenErrorRecovery", nil)];
+    NSAlert *alert = [NSAlert alertWithError:error];
+    [alert beginSheetModalForWindow:self.window modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:NULL];
     fileManager = nil;
+}
+
+- (void)alertDidEnd:(NSAlert *)alert returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
+{
+    [alert.window orderOut:nil];
+    [self.window orderOut:nil];
 }
 
 @end

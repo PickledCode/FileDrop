@@ -9,7 +9,7 @@
 #import "FDTokenWindowController.h"
 
 @implementation FDTokenWindowController
-@synthesize tokenField, delegate, tokenString;
+@synthesize tokenField, delegate, okButtonEnabled;
 
 - (id)init
 {
@@ -19,7 +19,7 @@
 - (IBAction)ok:(id)sender
 {
     if ([self.delegate respondsToSelector:@selector(tokenWindowController:clickedOKWithToken:)]) {
-        [self.delegate tokenWindowController:self clickedOKWithToken:self.tokenString];
+        [self.delegate tokenWindowController:self clickedOKWithToken:self.tokenField.stringValue];
     }
 }
 
@@ -30,4 +30,10 @@
     }
 }
 
+#pragma mark - NSTextFieldDelegate
+
+- (void)controlTextDidChange:(NSNotification *)obj
+{
+    self.okButtonEnabled = self.tokenField.stringValue.length != 0;
+}
 @end
