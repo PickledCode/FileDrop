@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0339EFA8146DC41200D236B4 /* FDTransferWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0339EFA7146DC41200D236B4 /* FDTransferWindowController.m */; };
+		0339EFAC146DC45800D236B4 /* FDTokenWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0339EFAB146DC45800D236B4 /* FDTokenWindowController.m */; };
+		0339EFAE146DC48D00D236B4 /* FDTransferWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0339EFAD146DC48D00D236B4 /* FDTransferWindowController.xib */; };
 		2BAE845C146DA4E300E60748 /* FDFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAE845B146DA4E300E60748 /* FDFunctions.m */; };
 		2BAE845E146DA91E00E60748 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BAE845D146DA91E00E60748 /* CoreFoundation.framework */; };
 		2BEAFD641469E4E600F791BF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BEAFD631469E4E600F791BF /* Cocoa.framework */; };
@@ -50,6 +53,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0339EFA6146DC41200D236B4 /* FDTransferWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDTransferWindowController.h; sourceTree = "<group>"; };
+		0339EFA7146DC41200D236B4 /* FDTransferWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDTransferWindowController.m; sourceTree = "<group>"; };
+		0339EFAA146DC45800D236B4 /* FDTokenWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDTokenWindowController.h; sourceTree = "<group>"; };
+		0339EFAB146DC45800D236B4 /* FDTokenWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDTokenWindowController.m; sourceTree = "<group>"; };
+		0339EFAD146DC48D00D236B4 /* FDTransferWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FDTransferWindowController.xib; sourceTree = "<group>"; };
 		2BAE845A146DA4E300E60748 /* FDFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDFunctions.h; sourceTree = "<group>"; };
 		2BAE845B146DA4E300E60748 /* FDFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDFunctions.m; sourceTree = "<group>"; };
 		2BAE845D146DA91E00E60748 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
@@ -216,6 +224,11 @@
 		2BEAFE84146B13D900F791BF /* Main Table */ = {
 			isa = PBXGroup;
 			children = (
+				0339EFA6146DC41200D236B4 /* FDTransferWindowController.h */,
+				0339EFA7146DC41200D236B4 /* FDTransferWindowController.m */,
+				0339EFAA146DC45800D236B4 /* FDTokenWindowController.h */,
+				0339EFAB146DC45800D236B4 /* FDTokenWindowController.m */,
+				0339EFAD146DC48D00D236B4 /* FDTransferWindowController.xib */,
 			);
 			name = "Main Table";
 			sourceTree = "<group>";
@@ -357,6 +370,7 @@
 				2BEAFEA8146B386000F791BF /* pause.png in Resources */,
 				2BEAFEA9146B386000F791BF /* resume_hover.png in Resources */,
 				2BEAFEAA146B386000F791BF /* resume.png in Resources */,
+				0339EFAE146DC48D00D236B4 /* FDTransferWindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,6 +396,8 @@
 				2BEAFEDD146CA7A100F791BF /* FDServerClient.m in Sources */,
 				2BEAFEE0146CA91B00F791BF /* KBPacket.m in Sources */,
 				2BAE845C146DA4E300E60748 /* FDFunctions.m in Sources */,
+				0339EFA8146DC41200D236B4 /* FDTransferWindowController.m in Sources */,
+				0339EFAC146DC45800D236B4 /* FDTokenWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,9 +18,9 @@
     
     NSUInteger bytesTransfered;
     NSUInteger bytesTotal;
+    
+    NSImage *icon;
 }
-
--(CGFloat)progress;
 
 @property (readonly) NSString *fileID;
 @property (readonly) NSString *localPath;
@@ -30,5 +30,7 @@
 
 @property (assign) NSUInteger bytesTransfered;
 @property (readonly) NSUInteger bytesTotal;
+
+@property (retain) NSImage *icon;
 
 @end
