@@ -19,7 +19,6 @@
 
 -(CGFloat)progress;
 
-
 @property (assign) BOOL isPaused;
 
 @property (assign) NSUInteger bytesTransfered;

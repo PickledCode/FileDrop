@@ -43,5 +43,8 @@
     }
     return nil;
 }
+-(FDFile*)fileInSection:(NSUInteger)section atIndex:(NSUInteger)ind {
+    return [[self filesInSection:section] objectAtIndex:ind];
+}
 
 @end

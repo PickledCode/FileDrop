@@ -8,14 +8,18 @@
 
 #import <Foundation/Foundation.h>
 #import "FDFile.h"
+#import "FDFileRecv.h"
+#import "FDFileSend.h"
 #import "FDDefines.h"
 
 @class FDFileManager, FDFile;
 
 @protocol FDFileManagerDelegate <NSObject>
-@required
+@required // One less check for if something responds to a selector. Empty implementations are easy enough
 -(void)fileManager:(FDFileManager*)fm willInsertFile:(FDFile*)file inSection:(NSUInteger)section;
 -(void)fileManager:(FDFileManager*)fm didInsertFile:(FDFile*)file inSection:(NSUInteger)section;
+-(void)fileManager:(FDFileManager*)fm willRemoveFile:(FDFile*)file inSection:(NSUInteger)section;
+-(void)fileManager:(FDFileManager*)fm didRemoveFile:(FDFile*)file inSection:(NSUInteger)section;
 @end
 
 
@@ -28,7 +32,20 @@
 }
 
 -(id)initWithToken:(NSString*)token;
+
+
+-(NSUInteger)numberOfSections;
+-(NSString*)titleForSection:(NSUInteger)section;
 -(NSArray*)filesInSection:(NSUInteger)section;
+-(FDFile*)fileInSection:(NSUInteger)section atIndex:(NSUInteger)ind;
+
+
+-(void)pauseFile:(FDFile*)file;
+-(void)resumeFile:(FDFile*)file;
+
+-(void)acceptFile:(FDFileRecv*)file;
+-(void)declineFile:(FDFileRecv*)file;
+
 
 @property (assign) id<FDFileManagerDelegate> delegate;
 
