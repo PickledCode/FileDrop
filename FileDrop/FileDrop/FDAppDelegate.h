@@ -10,8 +10,7 @@
 #import "FDFileDrop.h"
 
 @interface FDAppDelegate : NSObject <NSApplicationDelegate> {
+    NSMutableArray *sessionWindows;
 }
-
-@property (assign) IBOutlet NSWindow *window;
 
 @end

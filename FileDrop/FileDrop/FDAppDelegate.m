@@ -9,20 +9,19 @@
 #import "FDAppDelegate.h"
 #import "FDTransferWindowController.h"
 
-@implementation FDAppDelegate {
-    FDTransferWindowController *transfer;
-}
-
-@synthesize window = _window;
+@implementation FDAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    FDFileManager *fm = [[FDFileManager alloc] initWithToken:@"test" delegate:nil];
-    NSLog(@"FM: %@", fm);
-    [fm sendFileWithPath:@"/Users/ryansullivan/Desktop/FileDrop.zip"];
+    sessionWindows = [NSMutableArray new];
+    //FDFileManager *fm = [[FDFileManager alloc] initWithToken:@"test" delegate:nil];
+    //NSLog(@"FM: %@", fm);
+    //[fm sendFileWithPath:@"/Users/ryansullivan/Desktop/FileDrop.zip"];
     
-    transfer = [FDTransferWindowController transferWindowControllerWithTitle:@"Some window title"];
+    FDTransferWindowController *transfer = [FDTransferWindowController transferWindowControllerWithTitle:@"Session 1"];
     [transfer showWindow:nil];
+    
+    [sessionWindows addObject:transfer];
 }
 
 @end
