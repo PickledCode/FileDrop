@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2BAE845C146DA4E300E60748 /* FDFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAE845B146DA4E300E60748 /* FDFunctions.m */; };
+		2BAE845E146DA91E00E60748 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BAE845D146DA91E00E60748 /* CoreFoundation.framework */; };
 		2BEAFD641469E4E600F791BF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BEAFD631469E4E600F791BF /* Cocoa.framework */; };
 		2BEAFD6E1469E4E600F791BF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2BEAFD6C1469E4E600F791BF /* InfoPlist.strings */; };
 		2BEAFD701469E4E600F791BF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BEAFD6F1469E4E600F791BF /* main.m */; };
@@ -48,6 +50,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2BAE845A146DA4E300E60748 /* FDFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDFunctions.h; sourceTree = "<group>"; };
+		2BAE845B146DA4E300E60748 /* FDFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDFunctions.m; sourceTree = "<group>"; };
+		2BAE845D146DA91E00E60748 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		2BEAFD5F1469E4E600F791BF /* FileDrop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FileDrop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BEAFD631469E4E600F791BF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		2BEAFD661469E4E600F791BF /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -103,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BAE845E146DA91E00E60748 /* CoreFoundation.framework in Frameworks */,
 				2BEAFE831469FF0700F791BF /* ApplicationServices.framework in Frameworks */,
 				2BEAFE811469FEF100F791BF /* QuartzCore.framework in Frameworks */,
 				2BEAFD641469E4E600F791BF /* Cocoa.framework in Frameworks */,
@@ -132,6 +138,7 @@
 		2BEAFD621469E4E600F791BF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2BAE845D146DA91E00E60748 /* CoreFoundation.framework */,
 				2BEAFE821469FF0700F791BF /* ApplicationServices.framework */,
 				2BEAFE801469FEF100F791BF /* QuartzCore.framework */,
 				2BEAFD631469E4E600F791BF /* Cocoa.framework */,
@@ -218,6 +225,8 @@
 			children = (
 				2BEAFED0146CA19F00F791BF /* FDFileDrop.h */,
 				2BEAFED1146CA20000F791BF /* FDDefines.h */,
+				2BAE845A146DA4E300E60748 /* FDFunctions.h */,
+				2BAE845B146DA4E300E60748 /* FDFunctions.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -372,6 +381,7 @@
 				2BEAFED5146CA6A500F791BF /* RSSocket.m in Sources */,
 				2BEAFEDD146CA7A100F791BF /* FDServerClient.m in Sources */,
 				2BEAFEE0146CA91B00F791BF /* KBPacket.m in Sources */,
+				2BAE845C146DA4E300E60748 /* FDFunctions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
