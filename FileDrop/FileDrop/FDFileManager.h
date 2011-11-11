@@ -7,7 +7,29 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FDFile.h"
+#import "FDDefines.h"
 
-@interface FDFileManager : NSObject
+@class FDFileManager, FDFile;
+
+@protocol FDFileManagerDelegate <NSObject>
+@required
+-(void)fileManager:(FDFileManager*)fm willInsertFile:(FDFile*)file inSection:(NSUInteger)section;
+-(void)fileManager:(FDFileManager*)fm didInsertFile:(FDFile*)file inSection:(NSUInteger)section;
+@end
+
+
+@interface FDFileManager : NSObject {
+    NSString *connToken;
+    NSMutableArray *filesRecv;
+    NSMutableArray *filesSend;
+    
+    id<FDFileManagerDelegate> delegate;
+}
+
+-(id)initWithToken:(NSString*)token;
+-(NSArray*)filesInSection:(NSUInteger)section;
+
+@property (assign) id<FDFileManagerDelegate> delegate;
 
 @end

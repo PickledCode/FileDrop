@@ -88,6 +88,8 @@
 		2BEAFEA2146B386000F791BF /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
 		2BEAFEA3146B386000F791BF /* resume_hover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resume_hover.png; sourceTree = "<group>"; };
 		2BEAFEA4146B386000F791BF /* resume.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resume.png; sourceTree = "<group>"; };
+		2BEAFED0146CA19F00F791BF /* FDFileDrop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDFileDrop.h; sourceTree = "<group>"; };
+		2BEAFED1146CA20000F791BF /* FDDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDDefines.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +209,8 @@
 		2BEAFE88146B18A800F791BF /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				2BEAFED0146CA19F00F791BF /* FDFileDrop.h */,
+				2BEAFED1146CA20000F791BF /* FDDefines.h */,
 				2BEAFE89146B18C300F791BF /* RSUIToolBox.h */,
 				2BEAFE8A146B18C300F791BF /* RSUIToolBox.m */,
 			);
