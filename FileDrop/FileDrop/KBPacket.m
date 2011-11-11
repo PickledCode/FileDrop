@@ -24,7 +24,6 @@
     [dict setObject:@"auth" forKey:@"type"];
     [dict setObject:[token dataUsingEncoding:NSUTF8StringEncoding] forKey:@"token"];
     [self writeObject:dict toSocket:socket];
-    [dict release];
 }
 
 @end

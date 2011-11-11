@@ -38,6 +38,7 @@
 
 -(BOOL)isLocal;
 -(NSString*)host;
+-(int)fd;
 -(BOOL)isOpen;
 
 -(void)close;

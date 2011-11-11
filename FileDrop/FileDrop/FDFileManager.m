@@ -16,9 +16,8 @@
 -(id)initWithToken:(NSString *)token {
     self = [super init];
     if (self) {
-        client = [[FDServerClient alloc] initWithToken:token];
+        client = [[FDServerClient alloc] initWithToken:token andFileManager:self];
         if (!client) {
-            [super dealloc];
             return nil;
         }
         
@@ -27,12 +26,7 @@
     }
     return self;
 }
--(void)dealloc {
-    [filesRecv release];
-    [filesSend release];
-    delegate = nil;
-    [super dealloc];
-}
+
 
 #pragma mark -
 #pragma mark File manipulation
@@ -45,10 +39,33 @@
 }
 
 -(void)acceptFile:(FDFileRecv*)file {
-    
+    if ([filesRecv containsObject:file]) {
+        
+    } else if ([filesSend containsObject:file]) {
+        
+    }
 }
 -(void)declineFile:(FDFileRecv*)file {
+    if ([filesRecv containsObject:file]) {
+        
+    } else if ([filesSend containsObject:file]) {
+        
+    }
+}
+
+
+#pragma mark -
+#pragma mark File Sending
+-(void)sendFileWithPath:(NSString*)path {
+    BOOL isDir;
+    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDir];
+    if (!fileExists || isDir) {
+        NSLog(@"Invalid file path specified (isDir=%d, fileExists=%d)", isDir, fileExists);
+        return;
+    }
     
+    FDFileSend *file = [[FDFileSend alloc] initWithLocalPath:path];
+    [filesSend addObject:file];
 }
 
 

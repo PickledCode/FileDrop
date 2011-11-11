@@ -12,6 +12,13 @@
 
 @synthesize isPaused, bytesTransfered, bytesTotal;
 
+-(id)initWithLocalPath:(NSString*)p {
+    self = [super init];
+    if (self) {
+        localPath = [p copy];
+    }
+    return self;
+}
 
 -(CGFloat)progress {
     return (bytesTransfered / bytesTotal);

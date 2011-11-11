@@ -14,10 +14,15 @@
 @class FDFileManager;
 
 @interface FDServerClient : NSObject {
+    __weak FDFileManager *fileManager;
+    
     RSSocket *socket;
+    NSThread *readThread;
+    NSThread *uploadThread;
+    
     NSString *token;
 }
 
--(id)initWithToken:(NSString*)token;
+-(id)initWithToken:(NSString*)token andFileManager:(FDFileManager*)fm;
 
 @end

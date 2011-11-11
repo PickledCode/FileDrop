@@ -14,7 +14,8 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    
+    FDFileManager *fm = [[FDFileManager alloc] initWithToken:@"test"];
+    NSLog(@"FM: %@", fm);
 }
 
 @end

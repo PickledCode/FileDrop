@@ -19,6 +19,24 @@ Each FileDrop window communicates directly with an instance of FDFileManager. Wh
 
 A file object (FDFile) is either an instance of FDFileRecv (downloading) or FDFileSend (uploading). These two groups are to be separated in different sections of the tableview. To send a file, a user should simply drop it into the table. At this point you would tell the window's FDFileManager to send this file. To do this simply supply the file path. 
 
+
 ### FDFileManager
 
 Although confusing at first, FDFileManager pretends to manage sections itself. Simply put there are 2 sections (-numberOfSections), one section for downloads and one for uploads. However to make delegation easy (to alert you to where a file is being added) I decided to use "sections". Just play along and use my section methods. Who knows, maybe they'll be more useful in the future. 
+
+
+### Communication packets
+
+Within each "data" field of a given KB object, here are some examples
+
+    ["type": "file", "id": <STRING_ID>, "method": <STRING_METHOD>, …]
+
+The ID is a string, generally randomized by the sender, that will reference this specific file transfer. 
+
+
+Here are possible methods you will see:
+
+- "init": Creating a new transfer
+- "accept": Accepting a new transfer that was just init'd
+- "cancel": Canceling a transfer that has already been accept'd
+- "data": Data for a file that has been accepted and is downloading

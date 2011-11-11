@@ -17,6 +17,8 @@
     NSUInteger bytesTotal;
 }
 
+-(id)initWithLocalPath:(NSString*)p;
+
 -(CGFloat)progress;
 
 @property (assign) BOOL isPaused;

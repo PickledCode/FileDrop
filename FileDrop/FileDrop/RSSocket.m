@@ -27,7 +27,6 @@
 	mySockfd = socket(AF_INET, SOCK_STREAM, 0);
 	if (mySockfd < 0) {
 		NSLog(@"Socket error?");
-		[super dealloc];
 		return nil;
 	}
 	server = gethostbyname([remHost UTF8String]);
@@ -41,7 +40,6 @@
 	
 	if (connect(mySockfd, (const struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
 		NSLog(@"Socket no connect?");
-		[super dealloc];
 		return nil;
 	}
 	
@@ -63,18 +61,14 @@
 
 -(void)dealloc {
 	[self close];
-    [host release];
-    [super dealloc];
 }
+
 
 -(void)setLocal:(BOOL)loc {
 	isLocal = loc;
 }
 -(void)setHost:(NSString*)h {
-    if (host) {
-        [host release], host = nil;
-    }
-    host = [h retain];
+    host = h;
 }
 -(void)setDelegate:(id)d {
     delegate = d;
@@ -83,6 +77,7 @@
 
 -(BOOL)isLocal { return isLocal; }
 -(NSString*)host { return host; }
+-(int)fd { return sockfd; }
 -(BOOL)isOpen { return isOpen; }
 
 -(void)close {

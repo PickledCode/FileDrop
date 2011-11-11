@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "KBEncodeObjC.h"
+#import "KBDecodeObjC.h"
 #import "RSSocket.h"
 
 @interface KBPacket : NSObject

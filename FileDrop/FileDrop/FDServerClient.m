@@ -10,14 +10,17 @@
 
 @implementation FDServerClient
 
--(id)initWithToken:(NSString*)tok {
+-(id)initWithToken:(NSString*)tok andFileManager:(FDFileManager *)fm {
     self = [super init];
     if (self) {
+        fileManager = fm;
+        
         socket = [[RSSocket alloc] initWithHost:FD_SERVER_HOST port:FD_SERVER_PORT];
         if (!socket) {
-            [super dealloc];
             return nil;
         }
+        
+        readThread = [[NSThread alloc] initWithTarget:self selector:@selector(readSocket:) object:nil];
         
         token = [tok copy];
         [KBPacket writeAuth:token toSocket:socket];
@@ -26,9 +29,28 @@
 }
 
 -(void)dealloc {
-    [token release];
-    [socket release];
-    [super dealloc];
+    [readThread cancel];
+    [socket close];
+}
+
+
+#pragma mark -
+#pragma mark Socket IO
+
+-(void)readSocket:(id)sender {
+    @autoreleasepool {
+        while(![readThread isCancelled]) {
+            
+            id obj = kb_decode_full_fd([socket fd]);
+            if (![obj isKindOfClass:[NSDictionary class]]) {
+                continue;
+            }
+            
+            NSDictionary *dict = (NSDictionary*)obj;
+            NSLog(@"Got dict: %@", dict);
+            
+        }
+    }
 }
 
 @end

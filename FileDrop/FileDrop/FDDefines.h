@@ -9,10 +9,19 @@
 #ifndef FileDrop_FDDefines_h
 #define FileDrop_FDDefines_h
 
+
 #define FDFM_FILERECV_SECTION 0
 #define FDFM_FILESEND_SECTION 1
 
+
 #define FD_SERVER_HOST @"127.0.0.1"
 #define FD_SERVER_PORT 9000
+
+
+#define FD_PACKET_TYPE_INIT @"init"
+#define FD_PACKET_TYPE_CANC @"cancel"
+#define FD_PACKET_TYPE_ACPT @"accept"
+#define FD_PACKET_TYPE_DATA @"data"
+
 
 #endif
