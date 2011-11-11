@@ -75,6 +75,13 @@ static CGFloat const kGroupCellHeight = 17.0;
     [self.window orderOut:nil];
 }
 
+- (void)fileManager:(FDFileManager *)fm didRemoveFile:(FDFile *)file inSection:(NSUInteger)section {
+    [self reloadContent];
+}
+- (void)fileManager:(FDFileManager *)fm didInsertFile:(FDFile *)file inSection:(NSUInteger)section {
+    [self reloadContent];
+}
+
 #pragma mark - NSTableViewDataSource
 
 - (void)reloadContent

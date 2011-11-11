@@ -17,10 +17,12 @@
     self = [super init];
     if (self) {
         delegate = aDelegate;
+        
         client = [[FDServerClient alloc] initWithToken:token andFileManager:self];
         if (!client) {
             return nil;
         }
+        
         filesRecv = [NSMutableArray new];
         filesSend = [NSMutableArray new];
     }

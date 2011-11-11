@@ -41,4 +41,3 @@ Here are possible actions you will see:
 - "accept": Accepting a new transfer that was just init'd
 - "cancel": Canceling a transfer that has already been accept'd
 - "data": Data for a file that has been accepted and is downloading
-

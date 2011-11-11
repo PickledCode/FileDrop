@@ -16,6 +16,7 @@
         localPath = [p copy];
         fileID = randomString();
         filename = [p lastPathComponent];
+        
         NSString *extension = [self.filename pathExtension];
         NSWorkspace *ws = [NSWorkspace sharedWorkspace];
         icon = [ws iconForFileType:extension];
