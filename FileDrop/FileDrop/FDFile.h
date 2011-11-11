@@ -13,6 +13,8 @@
     NSData *fileHash;
     
     BOOL isPaused;
+    BOOL isAccepted;
+    
     NSUInteger bytesTransfered;
     NSUInteger bytesTotal;
 }
@@ -21,7 +23,10 @@
 
 -(CGFloat)progress;
 
+@property (readonly) NSString *localPath;
+
 @property (assign) BOOL isPaused;
+@property (assign) BOOL isAccepted;
 
 @property (assign) NSUInteger bytesTransfered;
 @property (readonly) NSUInteger bytesTotal;

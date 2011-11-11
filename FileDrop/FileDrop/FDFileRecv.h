@@ -8,6 +8,10 @@
 
 #import "FDFile.h"
 
-@interface FDFileRecv : FDFile
+@interface FDFileRecv : FDFile {
+    NSDictionary *_meta;
+}
+
+-(id)initWithMeta:(NSDictionary*)dict;
 
 @end

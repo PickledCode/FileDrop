@@ -10,4 +10,18 @@
 
 @implementation FDFileRecv
 
+-(id)initWithMeta:(NSDictionary*)dict {
+    self = [super init];
+    if (self) {
+        isAccepted = NO;
+        _meta = [dict copy];
+    }
+    return self;
+}
+
+-(void)acceptToLocalPath:(NSString*)lp {
+    localPath = [lp copy];
+    isAccepted = YES;
+}
+
 @end

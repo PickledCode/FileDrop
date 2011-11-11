@@ -35,6 +35,7 @@
 
 -(id)initWithToken:(NSString*)token;
 
+-(void)sendFileWithPath:(NSString*)path;
 
 -(void)pauseFile:(FDFile*)file;
 -(void)resumeFile:(FDFile*)file;

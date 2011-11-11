@@ -39,10 +39,8 @@
 }
 
 -(void)acceptFile:(FDFileRecv*)file {
-    if ([filesRecv containsObject:file]) {
-        
-    } else if ([filesSend containsObject:file]) {
-        
+    if ([filesSend containsObject:file] && [[file localPath] length] > 0) {
+        file.isAccepted = YES;
     }
 }
 -(void)declineFile:(FDFileRecv*)file {

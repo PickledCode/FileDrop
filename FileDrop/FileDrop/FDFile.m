@@ -10,7 +10,7 @@
 
 @implementation FDFile
 
-@synthesize isPaused, bytesTransfered, bytesTotal;
+@synthesize localPath, isPaused, isAccepted, bytesTransfered, bytesTotal;
 
 -(id)initWithLocalPath:(NSString*)p {
     self = [super init];

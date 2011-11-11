@@ -15,7 +15,8 @@
 }
 
 +(void)writeObject:(NSObject*)object toSocket:(RSSocket*)socket {
-    [socket writeData:[self dataWithObject:object]];
+    //[socket writeData:[self dataWithObject:object]];
+    kb_encode_full_fd(object, [socket fd]);
 }
 
 // Helpers

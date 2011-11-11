@@ -21,6 +21,7 @@
         }
         
         readThread = [[NSThread alloc] initWithTarget:self selector:@selector(readSocket:) object:nil];
+        [readThread start];
         
         token = [tok copy];
         [KBPacket writeAuth:token toSocket:socket];
@@ -41,6 +42,7 @@
     @autoreleasepool {
         while(![readThread isCancelled]) {
             
+            NSLog(@"Starting read...");
             id obj = kb_decode_full_fd([socket fd]);
             if (![obj isKindOfClass:[NSDictionary class]]) {
                 continue;
@@ -48,6 +50,20 @@
             
             NSDictionary *dict = (NSDictionary*)obj;
             NSLog(@"Got dict: %@", dict);
+            
+            NSString *dType = [dict objectForKey:@"type"];
+            if ([dType isEqualToString:@"conn"]) {
+                // Action and possible start info
+                NSString *dAction = [dict objectForKey:@"action"];
+                
+            } else if ([dType isEqualToString:@"error"]) {
+                // Message and error code
+                NSString *dMsg = [dict objectForKey:@"msg"];
+                NSNumber *dCode = [dict objectForKey:@"code"];
+                
+            } else if ([dType isEqualToString:@"data"]) {
+                
+            }
             
         }
     }

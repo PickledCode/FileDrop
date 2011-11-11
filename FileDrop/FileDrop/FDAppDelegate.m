@@ -16,6 +16,7 @@
 {
     FDFileManager *fm = [[FDFileManager alloc] initWithToken:@"test"];
     NSLog(@"FM: %@", fm);
+    [fm sendFileWithPath:@"/Users/ryansullivan/Desktop/FileDrop.zip"];
 }
 
 @end
