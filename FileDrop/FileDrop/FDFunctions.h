@@ -6,8 +6,13 @@
 //  Copyright (c) 2011 Freelance Web Developer. All rights reserved.
 //
 
+#ifndef FileDrop_FDFunctions_h
+#define FileDrop_FDFunctions_h
+
 #import <Foundation/Foundation.h>
 #import <CoreFoundation/CoreFoundation.h>
 
 //#define RKRandom(x) (arc4random() % ((NSUInteger)(x) + 1))
-NSString* randomString();
+NSString* randomString(void);
+
+#endif

@@ -6,10 +6,10 @@
 //  Copyright (c) 2011 Freelance Web Developer. All rights reserved.
 //
 
-#import "FDFunctions.h"
+#include "FDFunctions.h"
 
 
-NSString* randomString() {
+NSString* randomString(void) {
     CFUUIDRef cfuuid = CFUUIDCreate(kCFAllocatorDefault);
     return (__bridge_transfer NSString*)CFUUIDCreateString(kCFAllocatorDefault, cfuuid);
 }

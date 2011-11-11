@@ -27,11 +27,14 @@
         
         token = [tok copy];
         [KBPacket writeAuth:token toSocket:socket];
+        
+        uploadThread = [[NSThread alloc] initWithTarget:self selector:@selector(uploadSocket:) object:nil];
     }
     return self;
 }
 
 -(void)dealloc {
+    [uploadThread cancel];
     [readThread cancel];
     [socket close];
 }
@@ -42,6 +45,11 @@
 
 -(void)readSocket:(id)sender {
     @autoreleasepool {
+        if ([NSThread currentThread] != readThread) {
+            NSLog(@"-readSocket called from incorrect thread");
+            return;
+        }
+        
         while(![readThread isCancelled]) {
             
             NSLog(@"Starting read...");
@@ -77,6 +85,19 @@
             } else if ([dType isEqualToString:@"data"]) {
                 
             }
+            
+        }
+    }
+}
+
+-(void)uploadSocket:(id)sender {    
+    @autoreleasepool {
+        if ([NSThread currentThread] != uploadThread) {
+            NSLog(@"-uploadSocket called from incorrect thread");
+            return;
+        }
+        
+        while (![uploadThread isCancelled]) {
             
         }
     }
