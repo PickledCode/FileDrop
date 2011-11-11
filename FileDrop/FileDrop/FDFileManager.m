@@ -73,7 +73,9 @@
     }
     
     FDFileSend *file = [[FDFileSend alloc] initWithLocalPath:path];
+    [delegate fileManager:self willInsertFile:file inSection:FDFM_FILESEND_SECTION];
     [filesSend addObject:file];
+    [delegate fileManager:self didInsertFile:file inSection:FDFM_FILESEND_SECTION];
 }
 
 
