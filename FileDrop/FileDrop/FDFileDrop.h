@@ -10,7 +10,6 @@
 #define FileDrop_FDFileDrop_h
 
 #import "FDDefines.h"
-#import "RSUIToolBox.h"
 #import "FDFileManager.h"
 #import "FDFile.h"
 #import "FDFileRecv.h"
