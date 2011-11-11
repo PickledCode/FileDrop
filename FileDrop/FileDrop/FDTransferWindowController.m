@@ -7,7 +7,6 @@
 //
 
 #import "FDTransferWindowController.h"
-#import "FDFileManager.h"
 
 @implementation FDTransferWindowController {
     FDFileManager *fileManager;
@@ -37,6 +36,28 @@
     tokenWindowController = [[FDTokenWindowController alloc] init];
     tokenWindowController.delegate = self;
     [NSApp beginSheet:tokenWindowController.window modalForWindow:self.window modalDelegate:nil didEndSelector:nil contextInfo:NULL];
+}
+
+#pragma mark - FDTokenWindowController
+
+- (void)tokenWindowController:(FDTokenWindowController*)controller clickedOKWithToken:(NSString*)token
+{
+    [NSApp endSheet:tokenWindowController.window];
+    [tokenWindowController.window orderOut:nil];
+    fileManager = [[FDFileManager alloc] initWithToken:token delegate:self];
+}
+
+- (void)tokenWindowControllerClickedCancel:(FDTokenWindowController*)controller
+{
+    [NSApp endSheet:tokenWindowController.window];
+    [tokenWindowController.window orderOut:nil];
+}
+
+#pragma mark - FDFileManagerDelegate
+
+-(void)fileManagerErrorTokenInvalid:(FDFileManager*)fm
+{
+    fileManager = nil;
 }
 
 @end

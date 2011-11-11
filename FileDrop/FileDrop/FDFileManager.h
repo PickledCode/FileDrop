@@ -38,7 +38,7 @@
     __weak id<FDFileManagerDelegate> delegate;
 }
 
--(id)initWithToken:(NSString*)token;
+-(id)initWithToken:(NSString*)token delegate:(id<FDFileManagerDelegate>)aDelegate;
 
 
 -(void)sendFileWithPath:(NSString*)path;

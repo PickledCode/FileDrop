@@ -8,7 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 #import "FDTokenWindowController.h"
+#import "FDFileManager.h"
 
-@interface FDTransferWindowController : NSWindowController <FDTokenWindowControllerDelegate>
+@interface FDTransferWindowController : NSWindowController <FDTokenWindowControllerDelegate, FDFileManagerDelegate>
 
 @end
+

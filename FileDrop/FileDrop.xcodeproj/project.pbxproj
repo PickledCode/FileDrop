@@ -10,6 +10,7 @@
 		0339EFA8146DC41200D236B4 /* FDTransferWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0339EFA7146DC41200D236B4 /* FDTransferWindowController.m */; };
 		0339EFAC146DC45800D236B4 /* FDTokenWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0339EFAB146DC45800D236B4 /* FDTokenWindowController.m */; };
 		0339EFAE146DC48D00D236B4 /* FDTransferWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0339EFAD146DC48D00D236B4 /* FDTransferWindowController.xib */; };
+		0339EFB2146DCC7B00D236B4 /* NSError+FDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0339EFB1146DCC7B00D236B4 /* NSError+FDAdditions.m */; };
 		2BAE845C146DA4E300E60748 /* FDFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAE845B146DA4E300E60748 /* FDFunctions.m */; };
 		2BAE845E146DA91E00E60748 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BAE845D146DA91E00E60748 /* CoreFoundation.framework */; };
 		2BEAFD641469E4E600F791BF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BEAFD631469E4E600F791BF /* Cocoa.framework */; };
@@ -58,6 +59,8 @@
 		0339EFAA146DC45800D236B4 /* FDTokenWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDTokenWindowController.h; sourceTree = "<group>"; };
 		0339EFAB146DC45800D236B4 /* FDTokenWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDTokenWindowController.m; sourceTree = "<group>"; };
 		0339EFAD146DC48D00D236B4 /* FDTransferWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FDTransferWindowController.xib; sourceTree = "<group>"; };
+		0339EFB0146DCC7B00D236B4 /* NSError+FDAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+FDAdditions.h"; sourceTree = "<group>"; };
+		0339EFB1146DCC7B00D236B4 /* NSError+FDAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+FDAdditions.m"; sourceTree = "<group>"; };
 		2BAE845A146DA4E300E60748 /* FDFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDFunctions.h; sourceTree = "<group>"; };
 		2BAE845B146DA4E300E60748 /* FDFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDFunctions.m; sourceTree = "<group>"; };
 		2BAE845D146DA91E00E60748 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
@@ -126,6 +129,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0339EFAF146DCC6700D236B4 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				0339EFB0146DCC7B00D236B4 /* NSError+FDAdditions.h */,
+				0339EFB1146DCC7B00D236B4 /* NSError+FDAdditions.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		2BEAFD541469E4E500F791BF = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +180,7 @@
 		2BEAFD691469E4E600F791BF /* FileDrop */ = {
 			isa = PBXGroup;
 			children = (
+				0339EFAF146DCC6700D236B4 /* Categories */,
 				2BEAFDA51469F1B500F791BF /* Application Delegates */,
 				2BEAFE88146B18A800F791BF /* Helpers */,
 				2BEAFED2146CA66C00F791BF /* Communication */,
@@ -398,6 +411,7 @@
 				2BAE845C146DA4E300E60748 /* FDFunctions.m in Sources */,
 				0339EFA8146DC41200D236B4 /* FDTransferWindowController.m in Sources */,
 				0339EFAC146DC45800D236B4 /* FDTokenWindowController.m in Sources */,
+				0339EFB2146DCC7B00D236B4 /* NSError+FDAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
