@@ -20,7 +20,6 @@
 		2BEAFD901469E5D300F791BF /* KBEncodeObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BEAFD8B1469E5D300F791BF /* KBEncodeObjC.m */; };
 		2BEAFE811469FEF100F791BF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BEAFE801469FEF100F791BF /* QuartzCore.framework */; };
 		2BEAFE831469FF0700F791BF /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BEAFE821469FF0700F791BF /* ApplicationServices.framework */; };
-		2BEAFE8B146B18C300F791BF /* RSUIToolBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BEAFE8A146B18C300F791BF /* RSUIToolBox.m */; };
 		2BEAFE92146B289B00F791BF /* FDFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BEAFE91146B289B00F791BF /* FDFile.m */; };
 		2BEAFE95146B29E100F791BF /* FDFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BEAFE94146B29E100F791BF /* FDFileManager.m */; };
 		2BEAFE98146B2C1200F791BF /* FDFileRecv.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BEAFE97146B2C1100F791BF /* FDFileRecv.m */; };
@@ -75,8 +74,6 @@
 		2BEAFD8B1469E5D300F791BF /* KBEncodeObjC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KBEncodeObjC.m; sourceTree = "<group>"; };
 		2BEAFE801469FEF100F791BF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		2BEAFE821469FF0700F791BF /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
-		2BEAFE89146B18C300F791BF /* RSUIToolBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSUIToolBox.h; sourceTree = "<group>"; };
-		2BEAFE8A146B18C300F791BF /* RSUIToolBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSUIToolBox.m; sourceTree = "<group>"; };
 		2BEAFE90146B289B00F791BF /* FDFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDFile.h; sourceTree = "<group>"; };
 		2BEAFE91146B289B00F791BF /* FDFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDFile.m; sourceTree = "<group>"; };
 		2BEAFE93146B29E100F791BF /* FDFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDFileManager.h; sourceTree = "<group>"; };
@@ -221,8 +218,6 @@
 			children = (
 				2BEAFED0146CA19F00F791BF /* FDFileDrop.h */,
 				2BEAFED1146CA20000F791BF /* FDDefines.h */,
-				2BEAFE89146B18C300F791BF /* RSUIToolBox.h */,
-				2BEAFE8A146B18C300F791BF /* RSUIToolBox.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -370,7 +365,6 @@
 				2BEAFD8E1469E5D300F791BF /* KBDecodeObjC.m in Sources */,
 				2BEAFD8F1469E5D300F791BF /* KBEncode.c in Sources */,
 				2BEAFD901469E5D300F791BF /* KBEncodeObjC.m in Sources */,
-				2BEAFE8B146B18C300F791BF /* RSUIToolBox.m in Sources */,
 				2BEAFE92146B289B00F791BF /* FDFile.m in Sources */,
 				2BEAFE95146B29E100F791BF /* FDFileManager.m in Sources */,
 				2BEAFE98146B2C1200F791BF /* FDFileRecv.m in Sources */,
@@ -511,6 +505,7 @@
 				2BEAFD7F1469E4E600F791BF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
