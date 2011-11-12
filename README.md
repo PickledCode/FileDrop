@@ -39,5 +39,6 @@ Here are possible actions you will see:
 - "init": Creating a new transfer
 - "update": Tell a client where to begin sending a file that is not accepted *yet*
 - "accept": Accepting a new transfer that was just init'd
+- "decline": Declining a new transfer that was just init'd
 - "cancel": Canceling a transfer that has already been accept'd
 - "data": Data for a file that has been accepted and is downloading
