@@ -29,8 +29,6 @@
         
         token = [tok copy];
         [KBPacket writeAuth:token toSocket:socket];
-        
-        uploadThread = [[NSThread alloc] initWithTarget:self selector:@selector(uploadSocket:) object:nil];
     }
     return self;
 }
@@ -74,9 +72,9 @@
                         file.bytesTransfered = 0;
                         [KBPacket writeInitFile:file toSocket:socket];
                     }
-                    [uploadThread start];
+                    [self uploadThreadBegin];
                 } else if ([dAction isEqualToString:@"disconnected"]) {
-                    [uploadThread cancel];
+                    [self uploadThreadFinish];
                     isConnected = NO;
                 }
                 
@@ -91,7 +89,6 @@
                 }
                 
             } else if ([dType isEqualToString:@"data"]) {
-                // [uploadThread start];
                 
                 NSDictionary *dDict = [dict objectForKey:@"data"];
                 NSString *fType = [dDict objectForKey:@"type"];
@@ -181,6 +178,21 @@
             }
         }
     }
+}
+
+
+#pragma mark - Upload Thread begin/finish
+
+-(void)uploadThreadBegin {
+    if (uploadThread) {
+        [uploadThread cancel];
+    }
+    uploadThread = [[NSThread alloc] initWithTarget:self selector:@selector(uploadSocket:) object:nil];
+    [uploadThread start];
+}
+-(void)uploadThreadFinish {
+    [uploadThread cancel];
+    uploadThread = nil;
 }
 
 @end

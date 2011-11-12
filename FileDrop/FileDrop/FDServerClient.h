@@ -26,6 +26,9 @@
 
 -(id)initWithToken:(NSString*)token andFileManager:(FDFileManager*)fm;
 
+-(void)uploadThreadBegin;
+-(void)uploadThreadFinish;
+
 @property (readonly) RSSocket *socket;
 
 @end
