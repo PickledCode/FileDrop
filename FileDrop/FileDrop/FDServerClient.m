@@ -98,9 +98,16 @@
         if ([NSThread currentThread] != uploadThread) {
             NSLog(@"-uploadSocket called from incorrect thread");
             return;
+        } else if (!isConnected) {
+            NSLog(@"Not connected, but in upload thread. Uh oh.");
         }
         
         while (![uploadThread isCancelled]) {
+            if (!isConnected) {
+                [NSThread sleepForTimeInterval:0.25];
+                continue;
+            }
+            
             NSArray *files = [fileManager activeFilesInSection:FDFM_FILESEND_SECTION];
             NSUInteger uploadBuffer = FD_UPLOAD_BUFFER;
             
