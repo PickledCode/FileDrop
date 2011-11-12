@@ -68,8 +68,10 @@
 }
 
 - (void)updateIcon {
+    [self willChangeValueForKey:@"icon"];
     NSString *extension = [self.filename pathExtension];
     icon = [[NSWorkspace sharedWorkspace] iconForFileType:extension];
+    [self didChangeValueForKey:@"icon"];
 }
 
 @end
