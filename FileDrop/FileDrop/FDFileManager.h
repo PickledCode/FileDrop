@@ -48,6 +48,7 @@
 
 -(void)pauseFile:(FDFile*)file;
 -(void)resumeFile:(FDFile*)file;
+-(void)cancelFile:(FDFile*)file;
 
 
 -(NSUInteger)numberOfSections;

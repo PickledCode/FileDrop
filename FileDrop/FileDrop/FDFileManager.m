@@ -63,6 +63,18 @@
     }
     [KBPacket writeDeclineFile:file toSocket:client.socket];
 }
+-(void)cancelFile:(FDFile *)file {
+    if ([filesSend containsObject:file]) {
+        [delegate fileManager:self willRemoveFile:file inSection:FDFM_FILESEND_SECTION];
+        [filesSend removeObject:file];
+        [delegate fileManager:self didRemoveFile:file inSection:FDFM_FILESEND_SECTION];
+    } else if ([filesRecv containsObject:file]) {
+        [delegate fileManager:self willRemoveFile:file inSection:FDFM_FILERECV_SECTION];
+        [filesRecv removeObject:file];
+        [delegate fileManager:self didRemoveFile:file inSection:FDFM_FILERECV_SECTION];
+    }
+    [KBPacket writeCancelFile:file toSocket:client.socket];
+}
 
 
 #pragma mark -

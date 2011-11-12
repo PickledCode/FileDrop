@@ -36,6 +36,13 @@
     [self writeObject:dict toSocket:socket];
 }
 
++(void)writeCancelFile:(FDFile*)file toSocket:(RSSocket*)socket {
+    NSMutableDictionary *dict = [NSMutableDictionary new];
+    [dict setObject:@"file" forKey:@"type"];
+    [dict setObject:@"cancel" forKey:@"action"];
+    [dict setObject:[file fileID] forKey:@"id"];
+    [self writeDataDict:dict toSocket:socket];
+}
 
 +(void)writeFileBytes:(FDFile*)file toSocket:(RSSocket*)socket {
     NSMutableDictionary *dict = [NSMutableDictionary new];

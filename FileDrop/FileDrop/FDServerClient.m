@@ -71,6 +71,10 @@
                 
                 if ([dAction isEqualToString:@"connected"]) {
                     isConnected = YES;
+                    // On connect, any files in our list need to request again
+                    for (FDFileSend *file in [fileManager filesInSection:FDFM_FILESEND_SECTION]) {
+                        [KBPacket writeInitFile:file toSocket:socket];
+                    }
                 } else if ([dAction isEqualToString:@"disconnected"]) {
                     [uploadThread cancel];
                     isConnected = NO;

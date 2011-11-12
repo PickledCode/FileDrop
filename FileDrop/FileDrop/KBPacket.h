@@ -21,6 +21,8 @@
 +(void)writeObject:(NSObject*)object toSocket:(RSSocket*)socket;
 
 +(void)writeAuth:(NSString*)token toSocket:(RSSocket*)socket;
+// Any file req
++(void)writeCancelFile:(FDFile*)file toSocket:(RSSocket*)socket;
 // Recv file reqs
 +(void)writeFileBytes:(FDFile*)file toSocket:(RSSocket*)socket;
 +(void)writeAcceptFile:(FDFile*)file toSocket:(RSSocket*)socket;

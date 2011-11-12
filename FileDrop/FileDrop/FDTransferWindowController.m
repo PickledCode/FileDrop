@@ -67,11 +67,22 @@ static CGFloat const kGroupCellHeight = 17.0;
     NSUInteger row = [IBtableView rowForView:sender];
     id entity = [self.tableContent objectAtIndex:row];
     if ([entity isKindOfClass:[NSString class]]) {
-        NSLog(@"Button clicked on string? WTF");
+        NSLog(@"Button clicked on string");
         return;
     }
     
     FDFile *file = (FDFile*)entity;
+}
+- (IBAction)cancelButtonClicked:(id)sender {
+    NSUInteger row = [IBtableView rowForView:sender];
+    id entity = [self.tableContent objectAtIndex:row];
+    if ([entity isKindOfClass:[NSString class]]) {
+        NSLog(@"Button clicked on string");
+        return;
+    }
+    
+    FDFile *file = (FDFile*)entity;
+    [fileManager cancelFile:file];
 }
 
 
