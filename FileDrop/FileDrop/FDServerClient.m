@@ -50,7 +50,7 @@
             return;
         }
         
-        while(![readThread isCancelled]) {
+        while(![[NSThread currentThread] isCancelled]) {
             
             NSLog(@"Starting read...");
             id obj = kb_decode_full_fd([socket fd]);
@@ -142,13 +142,13 @@
 -(void)uploadSocket:(id)sender {    
     @autoreleasepool {
         if ([NSThread currentThread] != uploadThread) {
-            NSLog(@"-uploadSocket called from incorrect thread");
+            NSLog(@"-uploadSocket called from incorrect thread.. maybe");
             return;
         } else if (!isConnected) {
             NSLog(@"Not connected, but in upload thread. Uh oh.");
         }
         
-        while (![uploadThread isCancelled]) {
+        while (![[NSThread currentThread] isCancelled]) {
             if (!isConnected) {
                 [NSThread sleepForTimeInterval:0.25];
                 continue;
@@ -186,7 +186,7 @@
 
 -(void)uploadThreadBegin {
     if (uploadThread) {
-        [uploadThread cancel];
+        [self uploadThreadFinish];
     }
     uploadThread = [[NSThread alloc] initWithTarget:self selector:@selector(uploadSocket:) object:nil];
     [uploadThread start];
