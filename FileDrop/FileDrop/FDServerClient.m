@@ -63,12 +63,13 @@
             NSDictionary *dict = (NSDictionary*)obj;
             NSString *dType = [dict objectForKey:@"type"];
             
+            NSLog(@"Got dict: %@", dict);
+            
             if ([dType isEqualToString:@"conn"]) {
                 // Action and possible start info
                 NSString *dAction = [dict objectForKey:@"action"];
                 
                 if ([dAction isEqualToString:@"connected"]) {
-                    [uploadThread start];
                     isConnected = YES;
                 } else if ([dAction isEqualToString:@"disconnected"]) {
                     [uploadThread cancel];
@@ -86,7 +87,7 @@
                 }
                 
             } else if ([dType isEqualToString:@"data"]) {
-                NSLog(@"Got data: %@", dict);
+                // [uploadThread start];
             }
             
         }

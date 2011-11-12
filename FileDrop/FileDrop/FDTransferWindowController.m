@@ -43,6 +43,7 @@ static CGFloat const kGroupCellHeight = 17.0;
     [NSApp beginSheet:tokenWindowController.window modalForWindow:self.window modalDelegate:nil didEndSelector:nil contextInfo:NULL];
 }
 
+
 #pragma mark - FDTokenWindowController
 
 - (void)tokenWindowController:(FDTokenWindowController*)controller clickedOKWithToken:(NSString*)token
@@ -58,6 +59,21 @@ static CGFloat const kGroupCellHeight = 17.0;
     [tokenWindowController.window orderOut:nil];
     [self.window orderOut:nil];
 }
+
+
+#pragma mark - Button events
+
+- (void)pauseResumeButtonClicked:(id)sender {
+    NSUInteger row = [IBtableView rowForView:sender];
+    id entity = [self.tableContent objectAtIndex:row];
+    if ([entity isKindOfClass:[NSString class]]) {
+        NSLog(@"Button clicked on string? WTF");
+        return;
+    }
+    
+    FDFile *file = (FDFile*)entity;
+}
+
 
 #pragma mark - FDFileManagerDelegate
 
@@ -86,6 +102,7 @@ static CGFloat const kGroupCellHeight = 17.0;
 - (void)fileManager:(FDFileManager *)fm didInsertFile:(FDFile *)file inSection:(NSUInteger)section {
     [self reloadContent];
 }
+
 
 #pragma mark - NSTableViewDataSource
 
@@ -118,6 +135,7 @@ static CGFloat const kGroupCellHeight = 17.0;
 - (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
     return ([[self.tableContent objectAtIndex:row] isKindOfClass:[NSString class]]) ? kGroupCellHeight : kMainCellHeight;
 }
+
 
 #pragma mark - DragDrop Delegates
 

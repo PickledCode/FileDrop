@@ -33,6 +33,8 @@
     [dict setObject:data forKey:@"data"];
     [self writeObject:dict toSocket:socket];
 }
+
+
 +(void)writeFileBytes:(FDFile*)file toSocket:(RSSocket*)socket {
     NSMutableDictionary *dict = [NSMutableDictionary new];
     [dict setObject:@"file" forKey:@"type"];
@@ -41,7 +43,14 @@
     [dict setObject:[NSNumber numberWithUnsignedInteger:[file bytesTransfered]] forKey:@"bytesTransfered"];
     [self writeDataDict:dict toSocket:socket];
 }
-+(void)writeDeclineFile:(FDFile*)file toSocket:(RSSocket *)socket {
++(void)writeAcceptFile:(FDFile*)file toSocket:(RSSocket*)socket {
+    NSMutableDictionary *dict = [NSMutableDictionary new];
+    [dict setObject:@"file" forKey:@"type"];
+    [dict setObject:@"accept" forKey:@"action"];
+    [dict setObject:[file fileID] forKey:@"id"];
+    [self writeDataDict:dict toSocket:socket];
+}
++(void)writeDeclineFile:(FDFile*)file toSocket:(RSSocket*)socket {
     NSMutableDictionary *dict = [NSMutableDictionary new];
     [dict setObject:@"file" forKey:@"type"];
     [dict setObject:@"decline" forKey:@"action"];

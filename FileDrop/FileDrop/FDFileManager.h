@@ -43,7 +43,7 @@
 
 -(void)sendFileWithPath:(NSString*)path;
 
--(void)acceptFile:(FDFileRecv*)file WithPath:(NSString*)path;
+-(void)acceptFile:(FDFileRecv*)file withPath:(NSString*)path;
 -(void)declineFile:(FDFileRecv*)file;
 
 -(void)pauseFile:(FDFile*)file;

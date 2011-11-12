@@ -40,7 +40,7 @@
     
 }
 
--(void)acceptFile:(FDFileRecv*)file WithPath:(NSString *)path {
+-(void)acceptFile:(FDFileRecv*)file withPath:(NSString *)path {
     if (file.isAccepted && [[file localPath] isEqualToString:path]) {
         return;
     } else if (file.isAccepted) {
@@ -49,10 +49,11 @@
     }
     
     if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
-       // Resume file 
+        // Resume file 
         [KBPacket writeFileBytes:file toSocket:client.socket];
     }
     [file acceptToLocalPath:path];
+    [KBPacket writeAcceptFile:file toSocket:client.socket];
 }
 -(void)declineFile:(FDFileRecv*)file {
     if ([filesRecv containsObject:file]) {
