@@ -97,36 +97,39 @@
                 NSString *fAct = [dDict objectForKey:@"action"];
                 NSString *fID = [dDict objectForKey:@"id"];
                 
-                if ([fAct isEqualToString:@"data"]) {
-                    FDFile *_file = [fileManager getFileRecvFromID:fID];
-                    if (!_file) {
-                        NSLog(@"File doesn't exist but we have ID/data.");
-                        continue;
-                    } else if (!_file.localPath) {
-                        NSLog(@"File doesn't have path: %@", _file);
-                        continue;
-                    }
-                    
-                    NSData *_data = [dDict objectForKey:@"data"];
-                    NSLog(@"Saving to %@", _file.localPath);
-                    NSFileHandle *handler = _file.fileHandler;
-                    [handler seekToFileOffset:_file.bytesTransfered];
-                    [handler writeData:_data];
-                    _file.bytesTransfered = _file.bytesTransfered + [_data length];
-                    
-                } else if ([fType isEqualToString:@"file"]) {
-                    if ([fAct isEqualToString:@"init"]) {
+                if ([fType isEqualToString:@"file"]) {
+                    if ([fAct isEqualToString:@"data"]) {
+                        FDFile *_file = [fileManager getFileRecvFromID:fID];
+                        if (!_file) {
+                            NSLog(@"File doesn't exist but we have ID/data.");
+                            continue;
+                        } else if (!_file.localPath) {
+                            NSLog(@"File doesn't have path: %@", _file);
+                            continue;
+                        }
+                        
+                        NSData *_data = [dDict objectForKey:@"data"];
+                        NSLog(@"Saving to %@", _file.localPath);
+                        NSFileHandle *handler = _file.fileHandler;
+                        [handler seekToFileOffset:_file.bytesTransfered];
+                        [handler writeData:_data];
+                        _file.bytesTransfered = _file.bytesTransfered + [_data length];
+                        
+                    } else if ([fAct isEqualToString:@"init"]) {
+                        NSLog(@"-init new file from meta");
                         NSMutableDictionary *_meta = [NSMutableDictionary dictionaryWithDictionary:[dDict objectForKey:@"meta"]];
                         [_meta setObject:fID forKey:@"id"];
                         [fileManager addFileFromMeta:_meta];
                     } else if ([fAct isEqualToString:@"accept"]) {
+                        NSLog(@"-accepted new file");
                         FDFile *_file = [fileManager getFileSendFromID:fID];
                         _file.isAccepted = YES;
                     } else if ([fAct isEqualToString:@"decline"]) {
-                        
+                        NSLog(@"-declined new file");
                     } else if ([fAct isEqualToString:@"cancel"]) {
-                        
+                        NSLog(@"-canceled new file");
                     } else if ([fAct isEqualToString:@"update"]) {
+                        NSLog(@"-updating file for bytes %@", dDict);
                         FDFile *_file = [fileManager getFileSendFromID:fID];
                         NSUInteger newTrans = [[dDict objectForKey:@"bytesTransfered"] unsignedIntegerValue];
                         _file.bytesTransfered = newTrans;
