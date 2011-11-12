@@ -109,6 +109,8 @@
     }
     
     FDFileSend *file = [[FDFileSend alloc] initWithLocalPath:path];
+    file.fileManagerRef = self;
+    
     [delegate fileManager:self willInsertFile:file inSection:FDFM_FILESEND_SECTION];
     [filesSend addObject:file];
     [delegate fileManager:self didInsertFile:file inSection:FDFM_FILESEND_SECTION];
@@ -118,6 +120,8 @@
 #pragma mark File Recv (Private)
 -(void)addFileFromMeta:(NSDictionary*)meta {
     FDFileRecv *file = [[FDFileRecv alloc] initWithMeta:meta];
+    file.fileManagerRef = self;
+    
     [delegate fileManager:self willInsertFile:file inSection:FDFM_FILERECV_SECTION];
     [filesRecv addObject:file];
     [delegate fileManager:self didInsertFile:file inSection:FDFM_FILERECV_SECTION];

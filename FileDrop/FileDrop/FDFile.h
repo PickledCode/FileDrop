@@ -8,7 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+@class FDFileManager;
+
 @interface FDFile : NSObject {
+    __weak FDFileManager *fileManagerRef;
     NSString *fileID;
     NSString *localPath;
     NSString *fileHash;
@@ -39,6 +42,8 @@
 
 @property (nonatomic, assign) NSUInteger bytesTransfered;
 @property (nonatomic, readonly) NSUInteger bytesTotal;
+
+@property (weak) FDFileManager *fileManagerRef;
 
 @property (nonatomic, retain, readonly) NSImage *icon;
 

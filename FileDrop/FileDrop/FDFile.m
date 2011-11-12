@@ -11,7 +11,7 @@
 
 @implementation FDFile
 
-@synthesize fileID, localPath, isPaused, isAccepted, isFinished, isAcceptable, bytesTransfered, bytesTotal, icon, progressIndeterminate, progressAnimated, filename;
+@synthesize fileID, localPath, isPaused, isAccepted, isFinished, isAcceptable, bytesTransfered, bytesTotal, icon, progressIndeterminate, progressAnimated, filename, fileManagerRef;
 
 - (id)init
 {
