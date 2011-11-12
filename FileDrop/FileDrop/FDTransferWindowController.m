@@ -90,7 +90,7 @@ static CGFloat const kGroupCellHeight = 17.0;
     NSMutableArray *content = [NSMutableArray arrayWithCapacity:sections];
     for (NSInteger i = 0; i < sections; i++) {
         [content addObject:[fileManager titleForSection:i]];
-        [content addObjectsFromArray:[fileManager activeFilesInSection:i]];
+        [content addObjectsFromArray:[fileManager filesInSection:i]];
     }
     self.tableContent = content;
 }
