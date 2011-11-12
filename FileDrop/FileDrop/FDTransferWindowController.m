@@ -64,10 +64,23 @@ static CGFloat const kGroupCellHeight = 17.0;
 #pragma mark - Button events
 
 - (IBAction)acceptTransfer:(id)sender {
-    //FDFile *file = [self fileFromSubview:sender];
+    FDFileRecv *file = (FDFileRecv*)[self fileFromSubview:sender];
+    
     // Open "Save As" dialog
+    NSSavePanel *save = [NSSavePanel savePanel];
+    [save setExtensionHidden:NO];
+    [save setTreatsFilePackagesAsDirectories:YES];
+    [save setNameFieldStringValue:[file filename]];
+    
+    NSUInteger result = [save runModal];
+    if (result != NSOKButton) {
+        return;
+    }
+    
+    NSString *path = [[save URL] absoluteString];
+    [fileManager acceptFile:file withPath:path];
 }
-- (void)pauseResumeButtonClicked:(id)sender {
+- (IBAction)pauseResumeButtonClicked:(id)sender {
     //FDFile *file = [self fileFromSubview:sender];
     // TBD
 }
