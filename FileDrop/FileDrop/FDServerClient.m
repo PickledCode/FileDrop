@@ -61,15 +61,14 @@
             }
             
             NSDictionary *dict = (NSDictionary*)obj;
-            NSLog(@"Got dict: %@", dict);
-            
             NSString *dType = [dict objectForKey:@"type"];
+            
             if ([dType isEqualToString:@"conn"]) {
                 // Action and possible start info
                 NSString *dAction = [dict objectForKey:@"action"];
                 
                 if ([dAction isEqualToString:@"connected"]) {
-                    //[uploadThread start];
+                    [uploadThread start];
                     isConnected = YES;
                 } else if ([dAction isEqualToString:@"disconnected"]) {
                     [uploadThread cancel];
@@ -83,12 +82,11 @@
                 
                 NSLog(@"KBProxyServer ERROR: %d: %@", [dCode intValue], dMsg);
                 if ([dCode intValue] == 1) {
-                    // Auth token in use
                     [fileManager.delegate fileManagerErrorTokenInvalid:fileManager];
                 }
                 
             } else if ([dType isEqualToString:@"data"]) {
-                
+                NSLog(@"Got data: %@", dict);
             }
             
         }
@@ -104,15 +102,22 @@
         
         while (![uploadThread isCancelled]) {
             NSArray *files = [fileManager activeFilesInSection:FDFM_FILESEND_SECTION];
+            NSUInteger uploadBuffer = FD_UPLOAD_BUFFER;
+            
             if ([files count] < 1) {
-                [NSThread sleepForTimeInterval:0.08];
+                [NSThread sleepForTimeInterval:0.2];
+            } else if ([files count] == 1) {
+                uploadBuffer *= 2;
             }
             
             for (FDFile *file in files) {
                 NSFileHandle *handle = [NSFileHandle fileHandleForReadingAtPath:file.localPath];
                 [handle seekToFileOffset:file.bytesTransfered];
-                NSData *data = [handle readDataOfLength:FD_UPLOAD_BUFFER];
+                
+                NSData *data = [handle readDataOfLength:uploadBuffer];
                 [KBPacket writeData:data forFile:file toSocket:socket];
+                
+                file.bytesTransfered = file.bytesTransfered + uploadBuffer;
             }
         }
     }
