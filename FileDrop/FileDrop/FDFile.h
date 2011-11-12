@@ -24,6 +24,7 @@
     BOOL progressIndeterminate;
     BOOL progressAnimated;
     
+    NSFileHandle *fileHandler;
     NSUInteger bytesTransfered;
     NSUInteger bytesTotal;
     
@@ -40,8 +41,9 @@
 @property (nonatomic, assign) BOOL isFinished;
 @property (nonatomic, assign) BOOL isAcceptable;
 
-@property (nonatomic, assign) NSUInteger bytesTransfered;
+@property (assign) NSUInteger bytesTransfered;
 @property (nonatomic, readonly) NSUInteger bytesTotal;
+@property (nonatomic, readonly) NSFileHandle *fileHandler;
 
 @property (weak) FDFileManager *fileManagerRef;
 

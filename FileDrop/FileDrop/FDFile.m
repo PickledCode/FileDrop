@@ -11,7 +11,7 @@
 
 @implementation FDFile
 
-@synthesize fileID, localPath, isPaused, isAccepted, isFinished, isAcceptable, bytesTransfered, bytesTotal, icon, progressIndeterminate, progressAnimated, filename, fileManagerRef;
+@synthesize fileID, localPath, isPaused, isAccepted, isFinished, isAcceptable, bytesTransfered, bytesTotal, icon, progressIndeterminate, progressAnimated, filename, fileManagerRef, fileHandler;
 
 - (id)init
 {
@@ -26,6 +26,11 @@
     }
     return self;
 }
+
+-(void)dealloc {
+    [fileHandler closeFile];
+}
+
 
 -(CGFloat)progress {
     return (bytesTransfered / bytesTotal);

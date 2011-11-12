@@ -14,6 +14,7 @@
     self = [super init];
     if (self) {
         localPath = [p copy];
+        fileHandler = [NSFileHandle fileHandleForUpdatingAtPath:localPath];
         fileID = randomString();
         filename = [p lastPathComponent];
         bytesTotal = [[[NSFileManager defaultManager] attributesOfItemAtPath:localPath error:nil] fileSize];

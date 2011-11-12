@@ -45,6 +45,7 @@
 
 -(void)acceptToLocalPath:(NSString*)lp {
     localPath = [lp copy];
+    fileHandler = [NSFileHandle fileHandleForUpdatingAtPath:localPath];
     filename = [lp lastPathComponent];
     [self updateIcon];
     self.isAccepted = YES;

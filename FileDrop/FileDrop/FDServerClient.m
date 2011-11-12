@@ -76,8 +76,8 @@
                     }
                     [self uploadThreadBegin];
                 } else if ([dAction isEqualToString:@"disconnected"]) {
-                    isConnected = NO;
                     [self uploadThreadFinish];
+                    isConnected = NO;
                 }
                 
             } else if ([dType isEqualToString:@"error"]) {
@@ -109,10 +109,9 @@
                     
                     NSData *_data = [dDict objectForKey:@"data"];
                     NSLog(@"Saving to %@", _file.localPath);
-                    NSFileHandle *handler = [NSFileHandle fileHandleForWritingAtPath:_file.localPath];
+                    NSFileHandle *handler = _file.fileHandler;
                     [handler seekToFileOffset:_file.bytesTransfered];
                     [handler writeData:_data];
-                    [handler closeFile];
                     _file.bytesTransfered = _file.bytesTransfered + [_data length];
                     
                 } else if ([fType isEqualToString:@"file"]) {
@@ -167,11 +166,10 @@
             
             
             for (FDFile *file in files) {
-                NSFileHandle *handle = [NSFileHandle fileHandleForReadingAtPath:file.localPath];
-                [handle seekToFileOffset:file.bytesTransfered];
                 
+                NSFileHandle *handle = file.fileHandler;
+                [handle seekToFileOffset:file.bytesTransfered];
                 NSData *data = [handle readDataOfLength:uploadBuffer];
-                [handle closeFile];
                 
                 BOOL writeSuccess = [KBPacket writeData:data forFile:file toSocket:socket];
                 if (writeSuccess) {
