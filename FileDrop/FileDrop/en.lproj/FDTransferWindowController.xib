@@ -284,7 +284,7 @@
 								<reference key="NSSupport" ref="962285976"/>
 								<string key="NSCellIdentifier">_NS:2510</string>
 								<reference key="NSControlView" ref="415678296"/>
-								<int key="NSButtonFlags">105136383</int>
+								<int key="NSButtonFlags">-2042347265</int>
 								<int key="NSButtonFlags2">134</int>
 								<object class="NSCustomResource" key="NSNormalImage">
 									<string key="NSClassName">NSImage</string>
