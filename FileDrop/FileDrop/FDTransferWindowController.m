@@ -63,26 +63,27 @@ static CGFloat const kGroupCellHeight = 17.0;
 
 #pragma mark - Button events
 
+- (IBAction)acceptTransfer:(id)sender {
+    //FDFile *file = [self fileFromSubview:sender];
+    // Open "Save As" dialog
+}
 - (void)pauseResumeButtonClicked:(id)sender {
-    NSUInteger row = [IBtableView rowForView:sender];
-    id entity = [self.tableContent objectAtIndex:row];
-    if ([entity isKindOfClass:[NSString class]]) {
-        NSLog(@"Button clicked on string");
-        return;
-    }
-    
-    FDFile *file = (FDFile*)entity;
+    //FDFile *file = [self fileFromSubview:sender];
+    // TBD
 }
 - (IBAction)cancelButtonClicked:(id)sender {
-    NSUInteger row = [IBtableView rowForView:sender];
+    FDFile *file = [self fileFromSubview:sender];
+    [fileManager cancelFile:file];
+}
+
+-(FDFile*)fileFromSubview:(NSView*)view {
+    NSUInteger row = [IBtableView rowForView:view];
     id entity = [self.tableContent objectAtIndex:row];
     if ([entity isKindOfClass:[NSString class]]) {
-        NSLog(@"Button clicked on string");
-        return;
+        NSLog(@"Button clicked on string, meh");
+        return nil;
     }
-    
-    FDFile *file = (FDFile*)entity;
-    [fileManager cancelFile:file];
+    return entity;
 }
 
 

@@ -17,8 +17,12 @@
 
 -(NSArray*)acceptedFilesFromDragArray:(NSArray*)files;
 
+- (IBAction)acceptTransfer:(id)sender;
 - (IBAction)pauseResumeButtonClicked:(id)sender;
 - (IBAction)cancelButtonClicked:(id)sender;
+
+-(FDFile*)fileFromSubview:(NSView*)view;
+
 
 @property (nonatomic, retain) NSArray *tableContent;
 @property (nonatomic, weak) IBOutlet NSTableView *IBtableView;
