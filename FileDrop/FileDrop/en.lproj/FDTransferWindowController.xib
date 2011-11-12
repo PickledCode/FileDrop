@@ -57,6 +57,7 @@
 				<string key="NSWindowClass">NSWindow</string>
 				<nil key="NSViewClass"/>
 				<nil key="NSUserInterfaceItemIdentifier"/>
+				<string key="NSWindowContentMinSize">{324, 200}</string>
 				<object class="NSView" key="NSWindowView" id="1006">
 					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
@@ -229,6 +230,7 @@
 					<reference key="NSNextKeyView" ref="540810029"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1280, 778}}</string>
+				<string key="NSMinSize">{324, 222}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>
@@ -365,7 +367,7 @@
 								</object>
 								<object class="NSProgressIndicator" id="343703141">
 									<reference key="NSNextResponder" ref="42722904"/>
-									<int key="NSvFlags">1318</int>
+									<int key="NSvFlags">1314</int>
 									<object class="NSPSMatrix" key="NSDrawMatrix"/>
 									<string key="NSFrame">{{66, 16}, {370, 20}}</string>
 									<reference key="NSSuperview" ref="42722904"/>
@@ -438,22 +440,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">isIndeterminate: objectValue.progressIndeterminate</string>
-						<reference key="source" ref="343703141"/>
-						<reference key="destination" ref="42722904"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="343703141"/>
-							<reference key="NSDestination" ref="42722904"/>
-							<string key="NSLabel">isIndeterminate: objectValue.progressIndeterminate</string>
-							<string key="NSBinding">isIndeterminate</string>
-							<string key="NSKeyPath">objectValue.progressIndeterminate</string>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">40</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
 						<string key="label">maxValue: objectValue.bytesTotal</string>
 						<reference key="source" ref="343703141"/>
 						<reference key="destination" ref="42722904"/>
@@ -484,6 +470,39 @@
 						</object>
 					</object>
 					<int key="connectionID">51</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">animate: objectValue.progressAnimated</string>
+						<reference key="source" ref="343703141"/>
+						<reference key="destination" ref="42722904"/>
+						<object class="NSNibBindingConnector" key="connector" id="244274559">
+							<reference key="NSSource" ref="343703141"/>
+							<reference key="NSDestination" ref="42722904"/>
+							<string key="NSLabel">animate: objectValue.progressAnimated</string>
+							<string key="NSBinding">animate</string>
+							<string key="NSKeyPath">objectValue.progressAnimated</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">60</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">isIndeterminate: objectValue.progressIndeterminate</string>
+						<reference key="source" ref="343703141"/>
+						<reference key="destination" ref="42722904"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="343703141"/>
+							<reference key="NSDestination" ref="42722904"/>
+							<string key="NSLabel">isIndeterminate: objectValue.progressIndeterminate</string>
+							<string key="NSBinding">isIndeterminate</string>
+							<string key="NSKeyPath">objectValue.progressIndeterminate</string>
+							<reference key="NSPreviousConnector" ref="244274559"/>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">61</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -769,7 +788,7 @@
 				<reference key="dict.values" ref="1002"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">55</int>
+			<int key="maxID">61</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

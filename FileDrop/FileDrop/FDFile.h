@@ -16,7 +16,9 @@
     
     BOOL isPaused;
     BOOL isAccepted;
+    
     BOOL progressIndeterminate;
+    BOOL progressAnimated;
     
     NSUInteger bytesTransfered;
     NSUInteger bytesTotal;
@@ -39,4 +41,5 @@
 // Don't need to touch these, these will be set by the custom setters
 @property (nonatomic, copy, readonly) NSString *filename;
 @property (nonatomic, assign) BOOL progressIndeterminate;
+@property (nonatomic, assign) BOOL progressAnimated;
 @end

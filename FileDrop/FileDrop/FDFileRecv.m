@@ -13,9 +13,7 @@
 -(id)initWithMeta:(NSDictionary*)dict {
     self = [super init];
     if (self) {
-        isAccepted = NO;
         _meta = [dict copy];
-        
         fileID = [_meta objectForKey:@"id"];
     }
     return self;
@@ -28,7 +26,8 @@
 
 -(void)acceptToLocalPath:(NSString*)lp {
     localPath = [lp copy];
-    isAccepted = YES;
+    filename = [lp lastPathComponent];
+    self.isAccepted = YES;
 }
 
 @end

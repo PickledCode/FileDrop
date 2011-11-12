@@ -10,12 +10,15 @@
 
 @implementation FDFile
 
-@synthesize fileID, localPath, isPaused, isAccepted, bytesTransfered, bytesTotal, icon, progressIndeterminate, filename;
+@synthesize fileID, localPath, isPaused, isAccepted, bytesTransfered, bytesTotal, icon, progressIndeterminate, progressAnimated, filename;
 
 - (id)init
 {
     if ((self = [super init])) {
         self.progressIndeterminate = YES;
+        self.progressAnimated = NO;
+        self.isPaused = YES;
+        self.isAccepted = NO;
     }
     return self;
 }
