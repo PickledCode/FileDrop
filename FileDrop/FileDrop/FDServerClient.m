@@ -50,7 +50,7 @@
             return;
         }
         
-        while(![[NSThread currentThread] isCancelled]) {
+        while(![[NSThread currentThread] isCancelled] && [socket isOpen]) {
             
             NSLog(@"Starting read...");
             id obj = kb_decode_full_fd([socket fd]);
@@ -64,6 +64,7 @@
             if ([dType isEqualToString:@"conn"]) {
                 // Action and possible start info
                 NSString *dAction = [dict objectForKey:@"action"];
+                NSLog(@"Conn change: %@", dAction);
                 
                 if ([dAction isEqualToString:@"connected"]) {
                     isConnected = YES;
@@ -75,8 +76,8 @@
                     }
                     [self uploadThreadBegin];
                 } else if ([dAction isEqualToString:@"disconnected"]) {
-                    [self uploadThreadFinish];
                     isConnected = NO;
+                    [self uploadThreadFinish];
                 }
                 
             } else if ([dType isEqualToString:@"error"]) {
@@ -148,7 +149,7 @@
             NSLog(@"Not connected, but in upload thread. Uh oh.");
         }
         
-        while (![[NSThread currentThread] isCancelled]) {
+        while (![[NSThread currentThread] isCancelled] && [socket isOpen]) {
             if (!isConnected) {
                 [NSThread sleepForTimeInterval:0.25];
                 continue;
@@ -159,10 +160,10 @@
             
             if ([files count] < 1) {
                 [NSThread sleepForTimeInterval:0.2];
+                continue;
             } else if ([files count] == 1) {
                 uploadBuffer *= 2;
             }
-            //uploadBuffer = 500;
             
             
             for (FDFile *file in files) {
@@ -170,9 +171,9 @@
                 [handle seekToFileOffset:file.bytesTransfered];
                 
                 NSData *data = [handle readDataOfLength:uploadBuffer];
-                BOOL writeSuccess = [KBPacket writeData:data forFile:file toSocket:socket];
                 [handle closeFile];
                 
+                BOOL writeSuccess = [KBPacket writeData:data forFile:file toSocket:socket];
                 if (writeSuccess) {
                     file.bytesTransfered = file.bytesTransfered + [data length];
                 }
