@@ -170,19 +170,13 @@
             
             
             for (FDFile *file in files) {
-                NSLog(@"..0");
                 NSFileHandle *handle = file.fileHandler;
-                NSLog(@"..1");
                 [handle seekToFileOffset:file.bytesTransfered];
-                NSLog(@"..2");
                 NSData *data = [handle readDataOfLength:uploadBuffer];
-                NSLog(@"..3");
+                
                 BOOL writeSuccess = [KBPacket writeData:data forFile:file toSocket:socket];
-                NSLog(@"..4");
                 if (writeSuccess) {
-                    NSLog(@"..5");
                     file.bytesTransfered = file.bytesTransfered + [data length];
-                    NSLog(@"..6");
                 }
             }
         }
