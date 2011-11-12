@@ -70,6 +70,7 @@
                     // On connect, any files in our list need to request again and assume fresh state
                     for (FDFileSend *file in [fileManager filesInSection:FDFM_FILESEND_SECTION]) {
                         file.bytesTransfered = 0;
+                        file.isAccepted = NO;
                         [KBPacket writeInitFile:file toSocket:socket];
                     }
                     [self uploadThreadBegin];
