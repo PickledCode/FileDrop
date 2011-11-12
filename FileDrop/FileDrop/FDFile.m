@@ -20,6 +20,8 @@
         self.progressAnimated = NO;
         self.isPaused = YES;
         self.isAccepted = NO;
+        bytesTransfered = 0;
+        bytesTotal = 1;
     }
     return self;
 }
@@ -35,11 +37,12 @@
         isAccepted = accepted;
         [self didChangeValueForKey:@"isAccepted"];
         self.progressIndeterminate = !isAccepted;
-        
-        if ([self isKindOfClass:[FDFileRecv class]] && !isAccepted) {
-            self.isAcceptable = YES;
-        }
     }
+}
+
+- (void)updateIcon {
+    NSString *extension = [self.filename pathExtension];
+    icon = [[NSWorkspace sharedWorkspace] iconForFileType:extension];
 }
 
 @end

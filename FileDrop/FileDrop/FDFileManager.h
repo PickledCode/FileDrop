@@ -40,7 +40,7 @@
 
 -(id)initWithToken:(NSString*)token delegate:(id<FDFileManagerDelegate>)aDelegate;
 
-
+-(void)addFileFromMeta:(NSDictionary*)meta;
 -(void)sendFileWithPath:(NSString*)path;
 
 -(void)acceptFile:(FDFileRecv*)file withPath:(NSString*)path;

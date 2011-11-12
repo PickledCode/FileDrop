@@ -15,18 +15,23 @@
     if (self) {
         _meta = [dict copy];
         fileID = [_meta objectForKey:@"id"];
+        filename = [_meta objectForKey:@"name"];
+        bytesTotal = [[_meta objectForKey:@"bytesTotal"] unsignedIntegerValue];
+        [self updateIcon];
     }
     return self;
 }
 
--(NSString*)localPath {
-    // Return original file name if not accepted (saved)
-    return isAccepted == NO ? [_meta objectForKey:@"name"] : localPath;
+
+- (void)setIsAccepted:(BOOL)accepted {
+    [super setIsAccepted:accepted];
+    self.isAcceptable = !isAccepted;
 }
 
 -(void)acceptToLocalPath:(NSString*)lp {
     localPath = [lp copy];
     filename = [lp lastPathComponent];
+    [self updateIcon];
     self.isAccepted = YES;
 }
 

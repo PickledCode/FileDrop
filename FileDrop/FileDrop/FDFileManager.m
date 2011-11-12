@@ -94,6 +94,14 @@
     [KBPacket writeInitFile:file toSocket:client.socket];
 }
 
+#pragma mark File Recv (Private)
+-(void)addFileFromMeta:(NSDictionary*)meta {
+    FDFileRecv *file = [[FDFileRecv alloc] initWithMeta:meta];
+    [delegate fileManager:self willInsertFile:file inSection:FDFM_FILERECV_SECTION];
+    [filesRecv addObject:file];
+    [delegate fileManager:self didInsertFile:file inSection:FDFM_FILERECV_SECTION];
+}
+
 
 #pragma mark -
 #pragma mark Section methods

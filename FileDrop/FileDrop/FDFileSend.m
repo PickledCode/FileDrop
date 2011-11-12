@@ -16,10 +16,8 @@
         localPath = [p copy];
         fileID = randomString();
         filename = [p lastPathComponent];
-        
-        NSString *extension = [self.filename pathExtension];
-        NSWorkspace *ws = [NSWorkspace sharedWorkspace];
-        icon = [ws iconForFileType:extension];
+        bytesTotal = [[[NSFileManager defaultManager] attributesOfItemAtPath:localPath error:nil] fileSize];
+        [self updateIcon];
     }
     return self;
 }
@@ -27,6 +25,7 @@
 -(NSDictionary*)genMeta {
     NSMutableDictionary *dict = [NSMutableDictionary new];
     [dict setObject:filename forKey:@"name"];
+    [dict setObject:[NSNumber numberWithUnsignedInteger:bytesTotal] forKey:@"bytesTotal"];
     return dict;
 }
 

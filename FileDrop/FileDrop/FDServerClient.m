@@ -71,8 +71,9 @@
                 
                 if ([dAction isEqualToString:@"connected"]) {
                     isConnected = YES;
-                    // On connect, any files in our list need to request again
+                    // On connect, any files in our list need to request again and assume fresh state
                     for (FDFileSend *file in [fileManager filesInSection:FDFM_FILESEND_SECTION]) {
+                        file.bytesTransfered = 0;
                         [KBPacket writeInitFile:file toSocket:socket];
                     }
                 } else if ([dAction isEqualToString:@"disconnected"]) {
@@ -92,6 +93,28 @@
                 
             } else if ([dType isEqualToString:@"data"]) {
                 // [uploadThread start];
+                NSDictionary *dDict = [dict objectForKey:@"data"];
+                NSString *fType = [dDict objectForKey:@"type"];
+                NSString *fAct = [dDict objectForKey:@"action"];
+                NSString *fID = [dDict objectForKey:@"id"];
+                
+                if ([fType isEqualToString:@"file"]) {
+                    if ([fAct isEqualToString:@"init"]) {
+                        NSMutableDictionary *_meta = [NSMutableDictionary dictionaryWithDictionary:[dDict objectForKey:@"meta"]];
+                        [_meta setObject:fID forKey:@"id"];
+                        [fileManager addFileFromMeta:_meta];
+                    } else if ([fAct isEqualToString:@"accept"]) {
+                        
+                    } else if ([fAct isEqualToString:@"decline"]) {
+                        
+                    } else if ([fAct isEqualToString:@"cancel"]) {
+                        
+                    } else if ([fAct isEqualToString:@"update"]) {
+                        
+                    } else if ([fAct isEqualToString:@"data"]) {
+                        
+                    }
+                }
             }
             
         }

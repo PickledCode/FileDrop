@@ -26,6 +26,8 @@
     NSImage *icon;
 }
 
+- (void)updateIcon;
+
 @property (nonatomic, copy, readonly) NSString *fileID;
 @property (nonatomic, copy, readonly) NSString *localPath;
 
