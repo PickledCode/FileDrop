@@ -17,8 +17,8 @@
 }
 
 +(BOOL)writeObject:(NSObject*)object toSocket:(RSSocket*)socket {
-    return [socket writeData:[self dataWithObject:object]];
-    //kb_encode_full_fd(object, [socket fd]);
+    //return [socket writeData:[self dataWithObject:object]];
+    return kb_encode_full_fd(object, [socket fd]);
 }
 
 // Helpers
@@ -81,6 +81,7 @@
     [dict setObject:@"data" forKey:@"action"];
     [dict setObject:[file fileID] forKey:@"id"];
     [dict setObject:data forKey:@"data"];
+    NSLog(@"-writeData %lu for File: %@", [data length], file);
     return [self writeDataDict:dict toSocket:socket];
 }
 @end
