@@ -16,7 +16,7 @@
 - (void)reloadContent;
 
 @property (nonatomic, retain) NSArray *tableContent;
-@property (nonatomic, weak) IBOutlet NSTableView *tableView;
+@property (nonatomic, weak) IBOutlet NSTableView *IBtableView;
 
 @end
 

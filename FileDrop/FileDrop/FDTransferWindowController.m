@@ -18,7 +18,7 @@ static CGFloat const kGroupCellHeight = 17.0;
     FDFileManager *fileManager;
     FDTokenWindowController *tokenWindowController;
 }
-@synthesize tableContent, tableView;
+@synthesize tableContent, IBtableView;
 
 + (id)transferWindowControllerWithTitle:(NSString*)title
 {

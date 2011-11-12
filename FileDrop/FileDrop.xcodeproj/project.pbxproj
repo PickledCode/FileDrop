@@ -242,12 +242,12 @@
 		2BEAFE84146B13D900F791BF /* Main Table */ = {
 			isa = PBXGroup;
 			children = (
+				0339EFC5146DCFAF00D236B4 /* FDTransferWindowController.xib */,
 				0339EFA6146DC41200D236B4 /* FDTransferWindowController.h */,
 				0339EFA7146DC41200D236B4 /* FDTransferWindowController.m */,
+				0339EFAD146DC48D00D236B4 /* FDTokenWindowController.xib */,
 				0339EFAA146DC45800D236B4 /* FDTokenWindowController.h */,
 				0339EFAB146DC45800D236B4 /* FDTokenWindowController.m */,
-				0339EFAD146DC48D00D236B4 /* FDTokenWindowController.xib */,
-				0339EFC5146DCFAF00D236B4 /* FDTransferWindowController.xib */,
 			);
 			name = "Main Table";
 			sourceTree = "<group>";
