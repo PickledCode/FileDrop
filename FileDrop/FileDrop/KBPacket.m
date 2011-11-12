@@ -7,6 +7,8 @@
 //
 
 #import "KBPacket.h"
+#import "FDFileRecv.h"
+#import "FDFileSend.h"
 
 @implementation KBPacket
 
@@ -55,6 +57,15 @@
     [dict setObject:@"file" forKey:@"type"];
     [dict setObject:@"decline" forKey:@"action"];
     [dict setObject:[file fileID] forKey:@"id"];
+    [self writeDataDict:dict toSocket:socket];
+}
+
++(void)writeInitFile:(FDFileSend*)file toSocket:(RSSocket*)socket {
+    NSMutableDictionary *dict = [NSMutableDictionary new];
+    [dict setObject:@"file" forKey:@"type"];
+    [dict setObject:@"init" forKey:@"action"];
+    [dict setObject:[file fileID] forKey:@"id"];
+    [dict setObject:[file genMeta] forKey:@"meta"];
     [self writeDataDict:dict toSocket:socket];
 }
 +(void)writeData:(NSData*)data forFile:(FDFile*)file toSocket:(RSSocket*)socket {

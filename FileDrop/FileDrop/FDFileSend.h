@@ -13,4 +13,6 @@
 
 -(id)initWithLocalPath:(NSString*)p;
 
+-(NSDictionary*)genMeta;
+
 @end

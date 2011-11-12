@@ -284,7 +284,7 @@
 								<reference key="NSSupport" ref="962285976"/>
 								<string key="NSCellIdentifier">_NS:2510</string>
 								<reference key="NSControlView" ref="415678296"/>
-								<int key="NSButtonFlags">-2042347265</int>
+								<int key="NSButtonFlags">105136383</int>
 								<int key="NSButtonFlags2">134</int>
 								<object class="NSCustomResource" key="NSNormalImage">
 									<string key="NSClassName">NSImage</string>
@@ -484,7 +484,7 @@
 						<string key="label">animate: objectValue.progressAnimated</string>
 						<reference key="source" ref="343703141"/>
 						<reference key="destination" ref="42722904"/>
-						<object class="NSNibBindingConnector" key="connector" id="463602684">
+						<object class="NSNibBindingConnector" key="connector" id="911875672">
 							<reference key="NSSource" ref="343703141"/>
 							<reference key="NSDestination" ref="42722904"/>
 							<string key="NSLabel">animate: objectValue.progressAnimated</string>
@@ -506,7 +506,7 @@
 							<string key="NSLabel">isIndeterminate: objectValue.progressIndeterminate</string>
 							<string key="NSBinding">isIndeterminate</string>
 							<string key="NSKeyPath">objectValue.progressIndeterminate</string>
-							<reference key="NSPreviousConnector" ref="463602684"/>
+							<reference key="NSPreviousConnector" ref="911875672"/>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>

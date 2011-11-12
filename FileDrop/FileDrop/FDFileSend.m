@@ -24,4 +24,10 @@
     return self;
 }
 
+-(NSDictionary*)genMeta {
+    NSMutableDictionary *dict = [NSMutableDictionary new];
+    [dict setObject:filename forKey:@"name"];
+    return dict;
+}
+
 @end
