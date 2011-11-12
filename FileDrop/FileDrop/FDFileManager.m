@@ -148,7 +148,7 @@
     NSMutableArray *active = [NSMutableArray new];
     NSArray *objs = [self filesInSection:section];
     for (FDFile *file in objs) {
-        if (file.isAccepted && !file.isPaused) {
+        if (file.isAccepted && !file.isPaused && !file.isFinished) {
             [active addObject:file];
         }
     }
