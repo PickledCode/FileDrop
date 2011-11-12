@@ -77,6 +77,27 @@
 }
 
 
+-(FDFile*)getFileRecvFromID:(NSString*)fID {
+    for (FDFile *file in filesRecv) {
+        if ([[file fileID] isEqualToString:fID]) {
+            return file;
+        }
+    }
+    return nil;
+}
+-(FDFile*)getFileSendFromID:(NSString*)fID {
+    for (FDFile *file in filesSend) {
+        if ([[file fileID] isEqualToString:fID]) {
+            return file;
+        }
+    }
+    return nil;
+}
+-(FDFile*)getFileFromID:(NSString*)fID {
+    FDFile *fSend = [self getFileSendFromID:fID];
+    return fSend ? fSend : [self getFileRecvFromID:fID];
+}
+
 #pragma mark -
 #pragma mark File Sending
 -(void)sendFileWithPath:(NSString*)path {

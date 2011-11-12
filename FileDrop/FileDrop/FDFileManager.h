@@ -50,6 +50,9 @@
 -(void)resumeFile:(FDFile*)file;
 -(void)cancelFile:(FDFile*)file;
 
+-(FDFile*)getFileRecvFromID:(NSString*)fID;
+-(FDFile*)getFileSendFromID:(NSString*)fID;
+-(FDFile*)getFileFromID:(NSString*)fID;
 
 -(NSUInteger)numberOfSections;
 -(NSString*)titleForSection:(NSUInteger)section;

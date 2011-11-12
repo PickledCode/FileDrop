@@ -97,6 +97,7 @@
                 NSString *fType = [dDict objectForKey:@"type"];
                 NSString *fAct = [dDict objectForKey:@"action"];
                 NSString *fID = [dDict objectForKey:@"id"];
+                //FDFile *_file = [fileManager fileFromID:fID];
                 
                 if ([fType isEqualToString:@"file"]) {
                     if ([fAct isEqualToString:@"init"]) {
@@ -104,7 +105,8 @@
                         [_meta setObject:fID forKey:@"id"];
                         [fileManager addFileFromMeta:_meta];
                     } else if ([fAct isEqualToString:@"accept"]) {
-                        
+                        FDFile *_file = [fileManager getFileSendFromID:fID];
+                        _file.isAccepted = YES;
                     } else if ([fAct isEqualToString:@"decline"]) {
                         
                     } else if ([fAct isEqualToString:@"cancel"]) {
