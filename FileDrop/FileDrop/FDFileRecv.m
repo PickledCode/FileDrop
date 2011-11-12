@@ -33,7 +33,7 @@
 
 - (void)setIsFinished:(BOOL)finished {
     [super setIsFinished:finished];
-    if (![[self curFileHash] isEqualToString:fileHash]) {
+    if (isFinished && ![[self curFileHash] isEqualToString:fileHash]) {
         [fileManagerRef.delegate fileManager:fileManagerRef errorHashInvalidForFile:self];
     }
 }
