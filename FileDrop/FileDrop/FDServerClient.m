@@ -168,10 +168,12 @@
                 [handle seekToFileOffset:file.bytesTransfered];
                 
                 NSData *data = [handle readDataOfLength:uploadBuffer];
-                [KBPacket writeData:data forFile:file toSocket:socket];
+                BOOL writeSuccess = [KBPacket writeData:data forFile:file toSocket:socket];
                 [handle closeFile];
                 
-                file.bytesTransfered = file.bytesTransfered + uploadBuffer;
+                if (writeSuccess) {
+                    file.bytesTransfered = file.bytesTransfered + [data length];
+                }
             }
         }
     }
