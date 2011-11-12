@@ -78,6 +78,7 @@ static CGFloat const kGroupCellHeight = 17.0;
     }
     
     NSString *path = [[save URL] absoluteString];
+    [[NSFileManager defaultManager] createFileAtPath:path contents:nil attributes:nil];
     [fileManager acceptFile:file withPath:path];
 }
 - (IBAction)pauseResumeButtonClicked:(id)sender {

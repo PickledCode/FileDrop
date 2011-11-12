@@ -17,6 +17,7 @@
         fileID = randomString();
         filename = [p lastPathComponent];
         bytesTotal = [[[NSFileManager defaultManager] attributesOfItemAtPath:localPath error:nil] fileSize];
+        self.isPaused = NO;
         [self updateIcon];
     }
     return self;

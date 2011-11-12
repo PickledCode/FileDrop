@@ -107,6 +107,9 @@
                     } else if ([fAct isEqualToString:@"accept"]) {
                         FDFile *_file = [fileManager getFileSendFromID:fID];
                         _file.isAccepted = YES;
+                        if (![uploadThread isExecuting]) {
+                            [uploadThread start];
+                        }
                     } else if ([fAct isEqualToString:@"decline"]) {
                         
                     } else if ([fAct isEqualToString:@"cancel"]) {
@@ -114,7 +117,12 @@
                     } else if ([fAct isEqualToString:@"update"]) {
                         
                     } else if ([fAct isEqualToString:@"data"]) {
-                        
+                        FDFile *_file = [fileManager getFileRecvFromID:fID];
+                        NSData *_data = [dDict objectForKey:@"data"];
+                        NSFileHandle *handler = [NSFileHandle fileHandleForWritingAtPath:_file.localPath];
+                        [handler seekToFileOffset:_file.bytesTransfered];
+                        [handler writeData:_data];
+                        _file.bytesTransfered = _file.bytesTransfered + [_data length];
                     }
                 }
             }

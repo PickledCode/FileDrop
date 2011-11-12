@@ -17,6 +17,7 @@
         fileID = [_meta objectForKey:@"id"];
         filename = [_meta objectForKey:@"name"];
         bytesTotal = [[_meta objectForKey:@"bytesTotal"] unsignedIntegerValue];
+        self.isPaused = NO;
         [self updateIcon];
     }
     return self;
