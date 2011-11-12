@@ -78,7 +78,6 @@ static CGFloat const kGroupCellHeight = 17.0;
     }
     
     NSString *path = [[save URL] path];
-    [[NSFileManager defaultManager] createFileAtPath:path contents:[NSData data] attributes:nil];
     [fileManager acceptFile:file withPath:path];
 }
 - (IBAction)pauseResumeButtonClicked:(id)sender {
@@ -111,6 +110,10 @@ static CGFloat const kGroupCellHeight = 17.0;
     NSAlert *alert = [NSAlert alertWithError:error];
     [alert beginSheetModalForWindow:self.window modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:NULL];
     fileManager = nil;
+}
+-(void)fileManager:(FDFileManager*)fm errorHashInvalidForFile:(FDFile*)file
+{
+    NSLog(@"File hash invalid for %@: %@", file, file.localPath);
 }
 
 - (void)alertDidEnd:(NSAlert *)alert returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo

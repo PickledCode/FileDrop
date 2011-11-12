@@ -50,7 +50,10 @@
     
     if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
         // Resume file 
+        file.bytesTransfered = [[[NSFileManager defaultManager] attributesOfItemAtPath:file.localPath error:nil] fileSize];
         [KBPacket writeFileBytes:file toSocket:client.socket];
+    } else {
+        [[NSFileManager defaultManager] createFileAtPath:path contents:[NSData data] attributes:nil];
     }
     [file acceptToLocalPath:path];
     [KBPacket writeAcceptFile:file toSocket:client.socket];
