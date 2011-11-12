@@ -95,7 +95,6 @@ static CGFloat const kGroupCellHeight = 17.0;
         [content addObjectsFromArray:[fileManager filesInSection:i]];
     }
     self.tableContent = content;
-    [IBtableView reloadData];
 }
 
 - (BOOL)tableView:(NSTableView *)tableView isGroupRow:(NSInteger)row {
@@ -122,16 +121,7 @@ static CGFloat const kGroupCellHeight = 17.0;
 -(BOOL)tableView:(NSTableView *)tableView acceptDrop:(id<NSDraggingInfo>)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)dropOperation {
         
     NSArray *files = [[info draggingPasteboard] propertyListForType:NSFilenamesPboardType];
-    NSMutableArray *goodFiles = [NSMutableArray new];
-    
-    for (NSString *path in files) {
-        BOOL dirExists;
-        BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&dirExists];
-        
-        if (fileExists && !dirExists) {
-            [goodFiles addObject:path];
-        }
-    }
+    NSArray *goodFiles = [self acceptedFilesFromDragArray:files];
     
     NSLog(@"Files: %@", goodFiles);
     return [goodFiles count] > 0;
@@ -141,6 +131,13 @@ static CGFloat const kGroupCellHeight = 17.0;
     [tableView setDropRow:-1 dropOperation:NSDragOperationCopy];
     
     NSArray *files = [[info draggingPasteboard] propertyListForType:NSFilenamesPboardType];
+    NSArray *goodFiles = [self acceptedFilesFromDragArray:files];
+    //[[info draggingPasteboard] setPropertyList:goodFiles forType:NSFilenamesPboardType];
+    
+    return [goodFiles count] > 0 ? NSDragOperationCopy : NSDragOperationNone;
+}
+
+-(NSArray*)acceptedFilesFromDragArray:(NSArray*)files {
     NSMutableArray *goodFiles = [NSMutableArray new];
     for (NSString *path in files) {
         BOOL dirExists;
@@ -150,9 +147,7 @@ static CGFloat const kGroupCellHeight = 17.0;
             [goodFiles addObject:path];
         }
     }
-    [[info draggingPasteboard] setPropertyList:goodFiles forType:NSFilenamesPboardType];
-    
-    return [goodFiles count] > 0 ? NSDragOperationCopy : NSDragOperationNone;
+    return goodFiles;
 }
 
 @end

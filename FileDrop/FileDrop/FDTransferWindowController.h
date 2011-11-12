@@ -15,6 +15,8 @@
 + (id)transferWindowControllerWithTitle:(NSString*)title;
 - (void)reloadContent;
 
+-(NSArray*)acceptedFilesFromDragArray:(NSArray*)files;
+
 @property (nonatomic, retain) NSArray *tableContent;
 @property (nonatomic, weak) IBOutlet NSTableView *IBtableView;
 
