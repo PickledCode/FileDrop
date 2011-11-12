@@ -7,6 +7,7 @@
 //
 
 #import "FDFile.h"
+#import "FDFunctions.h"
 
 @interface FDFileRecv : FDFile {
     NSDictionary *_meta;

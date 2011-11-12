@@ -11,7 +11,7 @@
 @interface FDFile : NSObject {
     NSString *fileID;
     NSString *localPath;
-    NSData *fileHash;
+    NSString *fileHash;
     NSString *filename;
     
     BOOL isPaused;

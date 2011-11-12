@@ -17,6 +17,7 @@
         fileID = randomString();
         filename = [p lastPathComponent];
         bytesTotal = [[[NSFileManager defaultManager] attributesOfItemAtPath:localPath error:nil] fileSize];
+        fileHash = FileHash(localPath);
         self.isPaused = NO;
         [self updateIcon];
     }
@@ -27,6 +28,7 @@
     NSMutableDictionary *dict = [NSMutableDictionary new];
     [dict setObject:filename forKey:@"name"];
     [dict setObject:[NSNumber numberWithUnsignedInteger:bytesTotal] forKey:@"bytesTotal"];
+    [dict setObject:fileHash forKey:@"fileHash"];
     return dict;
 }
 

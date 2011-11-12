@@ -14,15 +14,28 @@
     self = [super init];
     if (self) {
         _meta = [dict copy];
+        localPath = nil;
         fileID = [_meta objectForKey:@"id"];
         filename = [_meta objectForKey:@"name"];
         bytesTotal = [[_meta objectForKey:@"bytesTotal"] unsignedIntegerValue];
+        fileHash = [_meta objectForKey:@"fileHash"];
         self.isPaused = NO;
         [self updateIcon];
     }
     return self;
 }
 
+-(NSString*)curFileHash {
+    return FileHash(localPath);
+}
+
+
+- (void)setIsFinished:(BOOL)finished {
+    [super setIsFinished:finished];
+    if (![[self curFileHash] isEqualToString:fileHash]) {
+        NSLog(@"FileRecv is finished, hashes don't match up!");
+    }
+}
 
 - (void)setIsAccepted:(BOOL)accepted {
     [super setIsAccepted:accepted];
