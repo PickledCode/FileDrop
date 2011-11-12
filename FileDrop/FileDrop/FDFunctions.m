@@ -26,11 +26,10 @@ CFStringRef FileMD5HashCreateWithPath(CFStringRef filePath, size_t chunkSizeForR
     CFReadStreamRef readStream = NULL;
     
     // Get the file URL
-    CFURLRef fileURL = 
-    CFURLCreateWithFileSystemPath(kCFAllocatorDefault, 
-                                  (CFStringRef)filePath, 
-                                  kCFURLPOSIXPathStyle, 
-                                  (Boolean)false);
+    CFURLRef fileURL = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, 
+                                                     (CFStringRef)filePath, 
+                                                     kCFURLPOSIXPathStyle, 
+                                                     (Boolean)false);
     if (!fileURL) goto done;
     
     // Create and open the read stream
