@@ -81,7 +81,7 @@
     [dict setObject:@"data" forKey:@"action"];
     [dict setObject:[file fileID] forKey:@"id"];
     [dict setObject:data forKey:@"data"];
-    NSLog(@"-writeData %lu for File: %@", [data length], file);
+    //NSLog(@"-writeData %lu for File: %@", [data length], file);
     return [self writeDataDict:dict toSocket:socket];
 }
 @end

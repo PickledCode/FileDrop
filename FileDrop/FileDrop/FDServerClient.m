@@ -63,8 +63,6 @@
             NSDictionary *dict = (NSDictionary*)obj;
             NSString *dType = [dict objectForKey:@"type"];
             
-            NSLog(@"Got dict: %@", dict);
-            
             if ([dType isEqualToString:@"conn"]) {
                 // Action and possible start info
                 NSString *dAction = [dict objectForKey:@"action"];
@@ -167,6 +165,7 @@
                 uploadBuffer *= 2;
             }
             uploadBuffer = 500;
+            
             
             for (FDFile *file in files) {
                 NSFileHandle *handle = [NSFileHandle fileHandleForReadingAtPath:file.localPath];
