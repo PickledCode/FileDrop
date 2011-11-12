@@ -76,6 +76,7 @@
                         file.bytesTransfered = 0;
                         [KBPacket writeInitFile:file toSocket:socket];
                     }
+                    [uploadThread start];
                 } else if ([dAction isEqualToString:@"disconnected"]) {
                     [uploadThread cancel];
                     isConnected = NO;
@@ -107,9 +108,6 @@
                     } else if ([fAct isEqualToString:@"accept"]) {
                         FDFile *_file = [fileManager getFileSendFromID:fID];
                         _file.isAccepted = YES;
-                        if (![uploadThread isExecuting]) {
-                            [uploadThread start];
-                        }
                     } else if ([fAct isEqualToString:@"decline"]) {
                         
                     } else if ([fAct isEqualToString:@"cancel"]) {
@@ -118,10 +116,19 @@
                         
                     } else if ([fAct isEqualToString:@"data"]) {
                         FDFile *_file = [fileManager getFileRecvFromID:fID];
+                        if (!_file) {
+                            NSLog(@"File doesn't exist but we have ID/data.");
+                            continue;
+                        } else if (!_file.localPath) {
+                            NSLog(@"File doesn't have path: %@", _file);
+                            continue;
+                        }
                         NSData *_data = [dDict objectForKey:@"data"];
+                        NSLog(@"Saving to %@", _file.localPath);
                         NSFileHandle *handler = [NSFileHandle fileHandleForWritingAtPath:_file.localPath];
                         [handler seekToFileOffset:_file.bytesTransfered];
                         [handler writeData:_data];
+                        [handler closeFile];
                         _file.bytesTransfered = _file.bytesTransfered + [_data length];
                     }
                 }
@@ -154,6 +161,7 @@
             } else if ([files count] == 1) {
                 uploadBuffer *= 2;
             }
+            //uploadBuffer = 512;
             
             for (FDFile *file in files) {
                 NSFileHandle *handle = [NSFileHandle fileHandleForReadingAtPath:file.localPath];
@@ -161,6 +169,7 @@
                 
                 NSData *data = [handle readDataOfLength:uploadBuffer];
                 [KBPacket writeData:data forFile:file toSocket:socket];
+                [handle closeFile];
                 
                 file.bytesTransfered = file.bytesTransfered + uploadBuffer;
             }

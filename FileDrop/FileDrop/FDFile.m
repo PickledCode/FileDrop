@@ -37,6 +37,17 @@
         isAccepted = accepted;
         [self didChangeValueForKey:@"isAccepted"];
         self.progressIndeterminate = !isAccepted;
+        self.progressAnimated = !isPaused && isAccepted;
+    }
+}
+
+- (void)setIsPaused:(BOOL)paused
+{
+    if (isPaused != paused) {
+        [self willChangeValueForKey:@"isPaused"];
+        isPaused = paused;
+        [self didChangeValueForKey:@"isPaused"];
+        self.progressAnimated = !isPaused && isAccepted;
     }
 }
 
