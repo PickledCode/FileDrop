@@ -77,6 +77,9 @@ static CGFloat const kGroupCellHeight = 17.0;
     [self.window orderOut:nil];
 }
 
+- (void)fileManager:(FDFileManager *)fm willInsertFile:(FDFile *)file inSection:(NSUInteger)section {}
+- (void)fileManager:(FDFileManager *)fm willRemoveFile:(FDFile *)file inSection:(NSUInteger)section {}
+
 - (void)fileManager:(FDFileManager *)fm didRemoveFile:(FDFile *)file inSection:(NSUInteger)section {
     [self reloadContent];
 }
@@ -123,7 +126,10 @@ static CGFloat const kGroupCellHeight = 17.0;
     NSArray *files = [[info draggingPasteboard] propertyListForType:NSFilenamesPboardType];
     NSArray *goodFiles = [self acceptedFilesFromDragArray:files];
     
-    NSLog(@"Files: %@", goodFiles);
+    for (NSString *path in goodFiles) {
+        [fileManager sendFileWithPath:path];
+    }
+    
     return [goodFiles count] > 0;
 }
 -(NSDragOperation)tableView:(NSTableView *)tableView validateDrop:(id<NSDraggingInfo>)info proposedRow:(NSInteger)row proposedDropOperation:(NSTableViewDropOperation)dropOperation {
