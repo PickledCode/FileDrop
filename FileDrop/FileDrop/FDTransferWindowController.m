@@ -18,7 +18,7 @@ static CGFloat const kGroupCellHeight = 17.0;
     FDFileManager *fileManager;
     FDTokenWindowController *tokenWindowController;
 }
-@synthesize tableContent;
+@synthesize tableContent, tableView;
 
 + (id)transferWindowControllerWithTitle:(NSString*)title
 {
@@ -106,9 +106,8 @@ static CGFloat const kGroupCellHeight = 17.0;
         NSTextField *textField = [tableView makeViewWithIdentifier:kGroupCellIdentifier owner:self];
         [textField setStringValue:entity];
         return textField;
-    } else {
-        return [tableView makeViewWithIdentifier:kMainCellIdentifier owner:self];
     }
+    return [tableView makeViewWithIdentifier:kMainCellIdentifier owner:self];
 }    
 
 - (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {

@@ -11,8 +11,12 @@
 #import "FDFileManager.h"
 
 @interface FDTransferWindowController : NSWindowController <FDTokenWindowControllerDelegate, FDFileManagerDelegate>
-@property (nonatomic, retain) NSArray *tableContent;
+
 + (id)transferWindowControllerWithTitle:(NSString*)title;
 - (void)reloadContent;
+
+@property (nonatomic, retain) NSArray *tableContent;
+@property (nonatomic, weak) IBOutlet NSTableView *tableView;
+
 @end
 
