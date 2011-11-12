@@ -170,17 +170,17 @@
             }
             
             @autoreleasepool {
-				for (FDFile *file in files) {
-					NSFileHandle *handle = file.fileHandler;
-					[handle seekToFileOffset:file.bytesTransfered];
-					NSData *data = [handle readDataOfLength:uploadBuffer];
-					
-					BOOL writeSuccess = [KBPacket writeData:data forFile:file toSocket:socket];
-					if (writeSuccess) {
-						file.bytesTransfered = file.bytesTransfered + [data length];
-					}
-				}
-			}
+                for (FDFile *file in files) {
+                    NSFileHandle *handle = file.fileHandler;
+                    [handle seekToFileOffset:file.bytesTransfered];
+                    NSData *data = [handle readDataOfLength:uploadBuffer];
+                    
+                    BOOL writeSuccess = [KBPacket writeData:data forFile:file toSocket:socket];
+                    if (writeSuccess) {
+                        file.bytesTransfered = file.bytesTransfered + [data length];
+                    }
+                }
+            }
             
         }
     }
