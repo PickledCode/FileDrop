@@ -18,6 +18,7 @@ NSString* randomString(void) {
 NSString* FileHash(NSString *path) {
     return (__bridge_transfer NSString*)FileMD5HashCreateWithPath((__bridge CFStringRef)path, FD_HASH_FileHashDefaultChunkSizeForReadingData);
 }
+// Thanks http://www.joel.lopes-da-silva.com/2010/09/07/compute-md5-or-sha-hash-of-large-file-efficiently-on-ios-and-mac-os-x/
 CFStringRef FileMD5HashCreateWithPath(CFStringRef filePath, size_t chunkSizeForReadingData) {
     
     // Declare needed variables
@@ -45,7 +46,7 @@ CFStringRef FileMD5HashCreateWithPath(CFStringRef filePath, size_t chunkSizeForR
     
     // Make sure chunkSizeForReadingData is valid
     if (!chunkSizeForReadingData) {
-        chunkSizeForReadingData = FileHashDefaultChunkSizeForReadingData;
+        chunkSizeForReadingData = FD_HASH_FileHashDefaultChunkSizeForReadingData;
     }
     
     // Feed the data to the hash object
