@@ -164,7 +164,7 @@
             } else if ([files count] == 1) {
                 uploadBuffer *= 2;
             }
-            uploadBuffer = 500;
+            //uploadBuffer = 500;
             
             
             for (FDFile *file in files) {

@@ -11,13 +11,14 @@
 
 @implementation FDFile
 
-@synthesize fileID, localPath, isPaused, isAccepted, isAcceptable, bytesTransfered, bytesTotal, icon, progressIndeterminate, progressAnimated, filename;
+@synthesize fileID, localPath, isPaused, isAccepted, isFinished, isAcceptable, bytesTransfered, bytesTotal, icon, progressIndeterminate, progressAnimated, filename;
 
 - (id)init
 {
     if ((self = [super init])) {
         self.progressIndeterminate = YES;
         self.progressAnimated = NO;
+        self.isFinished = NO;
         self.isPaused = YES;
         self.isAccepted = NO;
         bytesTransfered = 0;
@@ -50,6 +51,19 @@
         [self didChangeValueForKey:@"isPaused"];
         
         //self.progressAnimated = !isPaused && isAccepted;
+    }
+}
+
+- (void)setBytesTransfered:(NSUInteger)bytes
+{
+    if (bytesTransfered != bytes) {
+        [self willChangeValueForKey:@"bytesTransfered"];
+        bytesTransfered = bytes;
+        [self didChangeValueForKey:@"bytesTransfered"];
+        
+        if (bytesTransfered >= bytesTotal) {
+            self.isFinished = YES;
+        }
     }
 }
 

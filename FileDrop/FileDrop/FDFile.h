@@ -16,6 +16,7 @@
     
     BOOL isPaused;
     BOOL isAccepted;
+    BOOL isFinished;
     
     BOOL progressIndeterminate;
     BOOL progressAnimated;
@@ -33,6 +34,7 @@
 
 @property (nonatomic, assign) BOOL isPaused;
 @property (nonatomic, assign) BOOL isAccepted;
+@property (nonatomic, assign) BOOL isFinished;
 @property (nonatomic, assign) BOOL isAcceptable;
 
 @property (nonatomic, assign) NSUInteger bytesTransfered;
