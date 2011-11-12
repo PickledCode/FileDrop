@@ -17,6 +17,10 @@
 
 @interface KBPacket : NSObject
 
+
++(id)readPacketFromSocket:(RSSocket*)socket;
+
+
 +(NSData*)dataWithObject:(NSObject*)object;
 +(BOOL)writeObject:(NSObject*)object toSocket:(RSSocket*)socket;
 

@@ -55,12 +55,14 @@
     if (self) {
         sockfd = fd;
         isOpen = YES;
+        readLock = [NSRecursiveLock new];
         writeLock = [NSRecursiveLock new];
     }
     return self;
 }
 
 -(void)dealloc {
+    [readLock unlock];
     [writeLock unlock];
 	[self close];
 }
@@ -99,6 +101,7 @@
 
 -(NSData*)readData:(int)len {
     if (![self isOpen]) { return nil; }
+    [readLock lock];
     int count = 0;
     char *bytes = (char*)malloc(len);
     while (count < len) {
@@ -108,10 +111,12 @@
         if (add <= 0) {
             [self close];
             free(bytes);
+            [readLock unlock];
             return nil;
         }
         count += add;
     }
+    [readLock unlock];
     return [NSData dataWithBytesNoCopy:bytes length:count freeWhenDone:YES];
 }
 -(BOOL)writeData:(NSData*)d {

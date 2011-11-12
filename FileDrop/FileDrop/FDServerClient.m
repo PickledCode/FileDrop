@@ -20,6 +20,7 @@
         isConnected = NO;
         
         socket = [[RSSocket alloc] initWithHost:FD_SERVER_HOST port:FD_SERVER_PORT];
+        [socket setDelegate:self];
         if (!socket) {
             return nil;
         }
@@ -53,7 +54,7 @@
         while(![[NSThread currentThread] isCancelled] && [socket isOpen]) {
             
             NSLog(@"Starting read...");
-            id obj = kb_decode_full_fd([socket fd]);
+            id obj = [KBPacket readPacketFromSocket:socket];
             if (![obj isKindOfClass:[NSDictionary class]]) {
                 continue;
             }
@@ -169,18 +170,32 @@
             
             
             for (FDFile *file in files) {
-                
+                NSLog(@"..0");
                 NSFileHandle *handle = file.fileHandler;
+                NSLog(@"..1");
                 [handle seekToFileOffset:file.bytesTransfered];
+                NSLog(@"..2");
                 NSData *data = [handle readDataOfLength:uploadBuffer];
-                
+                NSLog(@"..3");
                 BOOL writeSuccess = [KBPacket writeData:data forFile:file toSocket:socket];
+                NSLog(@"..4");
                 if (writeSuccess) {
+                    NSLog(@"..5");
                     file.bytesTransfered = file.bytesTransfered + [data length];
+                    NSLog(@"..6");
                 }
             }
         }
     }
+}
+
+
+
+// Since KB read and write doesn't use RSSocket this won't work
+-(void)socketDidDisconnect:(RSSocket*)sock {
+    NSLog(@"-socketDidDisconnect");
+    isConnected = NO;
+    [self uploadThreadFinish];
 }
 
 

@@ -13,7 +13,7 @@
 
 @class FDFileManager;
 
-@interface FDServerClient : NSObject {
+@interface FDServerClient : NSObject <RSSocketDelegate> {
     __weak FDFileManager *fileManager;
     
     RSSocket *socket;

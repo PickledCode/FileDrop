@@ -12,14 +12,38 @@
 
 @implementation KBPacket
 
+
++(id)readPacketFromSocket:(RSSocket *)socket {
+    static NSLock *readLock = nil;
+    if (!readLock) {
+        readLock = [NSLock new];
+    }
+    
+    id ret = nil;
+    [readLock lock];
+    ret = kb_decode_full_fd([socket fd]);
+    [readLock unlock];
+    return ret;
+}
+
+
 +(NSData*)dataWithObject:(NSObject*)object {
     return kb_encode_full(object);
 }
 
 +(BOOL)writeObject:(NSObject*)object toSocket:(RSSocket*)socket {
-    //return [socket writeData:[self dataWithObject:object]];
-    return kb_encode_full_fd(object, [socket fd]);
+    static NSLock *writeLock = nil;
+    if (!writeLock) {
+        writeLock = [NSLock new];
+    }
+    
+    BOOL ret = NO;
+    [writeLock lock];
+    ret = kb_encode_full_fd(object, [socket fd]);
+    [writeLock unlock];
+    return ret;
 }
+
 
 // Helpers
 +(BOOL)writeAuth:(NSString*)token toSocket:(RSSocket*)socket {

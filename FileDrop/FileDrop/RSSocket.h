@@ -28,6 +28,7 @@
     id<RSSocketDelegate> delegate;
     NSThread *delegateThread;
     
+    NSRecursiveLock *readLock;
     NSRecursiveLock *writeLock;
 }
 
