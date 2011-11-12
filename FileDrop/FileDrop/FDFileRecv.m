@@ -7,6 +7,7 @@
 //
 
 #import "FDFileRecv.h"
+#import "FDFileManager.h"
 
 @implementation FDFileRecv
 
@@ -33,7 +34,7 @@
 - (void)setIsFinished:(BOOL)finished {
     [super setIsFinished:finished];
     if (![[self curFileHash] isEqualToString:fileHash]) {
-        NSLog(@"FileRecv is finished, hashes don't match up!");
+        [fileManagerRef.delegate fileManager:fileManagerRef errorHashInvalidForFile:self];
     }
 }
 

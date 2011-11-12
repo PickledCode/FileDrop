@@ -26,6 +26,7 @@
 
 // Errors
 -(void)fileManagerErrorTokenInvalid:(FDFileManager*)fm;
+-(void)fileManager:(FDFileManager*)fm errorHashInvalidForFile:(FDFile*)file;
 @end
 
 
