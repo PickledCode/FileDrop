@@ -7,10 +7,11 @@
 //
 
 #import "FDFile.h"
+#import "FDFileRecv.h"
 
 @implementation FDFile
 
-@synthesize fileID, localPath, isPaused, isAccepted, bytesTransfered, bytesTotal, icon, progressIndeterminate, progressAnimated, filename;
+@synthesize fileID, localPath, isPaused, isAccepted, isAcceptable, bytesTransfered, bytesTotal, icon, progressIndeterminate, progressAnimated, filename;
 
 - (id)init
 {
@@ -34,6 +35,10 @@
         isAccepted = accepted;
         [self didChangeValueForKey:@"isAccepted"];
         self.progressIndeterminate = !isAccepted;
+        
+        if ([self isKindOfClass:[FDFileRecv class]] && !isAccepted) {
+            self.isAcceptable = YES;
+        }
     }
 }
 

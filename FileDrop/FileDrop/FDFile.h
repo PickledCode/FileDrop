@@ -31,6 +31,7 @@
 
 @property (nonatomic, assign) BOOL isPaused;
 @property (nonatomic, assign) BOOL isAccepted;
+@property (nonatomic, assign) BOOL isAcceptable;
 
 @property (nonatomic, assign) NSUInteger bytesTransfered;
 @property (nonatomic, readonly) NSUInteger bytesTotal;
