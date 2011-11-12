@@ -47,6 +47,7 @@
 
 @property (weak) FDFileManager *fileManagerRef;
 
+@property (nonatomic, readonly) BOOL canPause;
 @property (nonatomic, retain, readonly) NSImage *icon;
 
 #pragma mark - Bindings Support

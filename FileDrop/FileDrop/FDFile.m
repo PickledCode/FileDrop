@@ -35,6 +35,7 @@
 -(CGFloat)progress {
     return (bytesTransfered / bytesTotal);
 }
+-(BOOL)canPause { return NO; }
 
 - (void)setIsAccepted:(BOOL)accepted
 {

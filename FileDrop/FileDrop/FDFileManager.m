@@ -33,11 +33,11 @@
 #pragma mark -
 #pragma mark File manipulation
 
--(void)pauseFile:(FDFile*)file {
-    
+-(void)pauseFile:(FDFileSend*)file {
+    file.isPaused = YES;
 }
--(void)resumeFile:(FDFile*)file {
-    
+-(void)resumeFile:(FDFileSend*)file {
+    file.isPaused = NO;
 }
 
 -(void)acceptFile:(FDFileRecv*)file withPath:(NSString *)path {

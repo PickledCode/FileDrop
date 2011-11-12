@@ -30,6 +30,7 @@
     return FileHash(localPath);
 }
 
+-(BOOL)canPause { return NO; }
 
 - (void)setIsFinished:(BOOL)finished {
     [super setIsFinished:finished];

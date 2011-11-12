@@ -33,4 +33,6 @@
     return dict;
 }
 
+-(BOOL)canPause { return YES; }
+
 @end

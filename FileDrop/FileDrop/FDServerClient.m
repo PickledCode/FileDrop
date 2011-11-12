@@ -20,7 +20,6 @@
         isConnected = NO;
         
         socket = [[RSSocket alloc] initWithHost:FD_SERVER_HOST port:FD_SERVER_PORT];
-        [socket setDelegate:self];
         if (!socket) {
             return nil;
         }
@@ -127,8 +126,10 @@
                         _file.isAccepted = YES;
                     } else if ([fAct isEqualToString:@"decline"]) {
                         NSLog(@"-declined new file");
+                        
                     } else if ([fAct isEqualToString:@"cancel"]) {
-                        NSLog(@"-canceled new file");
+                        NSLog(@"-canceled new file: %@", dDict);
+                        
                     } else if ([fAct isEqualToString:@"update"]) {
                         NSLog(@"-updating file for bytes %@", dDict);
                         FDFile *_file = [fileManager getFileSendFromID:fID];
@@ -183,14 +184,6 @@
     }
 }
 
-
-
-// Since KB read and write doesn't use RSSocket this won't work
--(void)socketDidDisconnect:(RSSocket*)sock {
-    NSLog(@"-socketDidDisconnect");
-    isConnected = NO;
-    [self uploadThreadFinish];
-}
 
 
 #pragma mark - Upload Thread begin/finish
