@@ -43,7 +43,7 @@
 
 @property (nonatomic, assign) NSUInteger bytesTransfered;
 @property (nonatomic, readonly) NSUInteger bytesTotal;
-@property (nonatomic, readonly) NSFileHandle *fileHandler;
+@property (readonly) NSFileHandle *fileHandler;
 
 @property (weak) FDFileManager *fileManagerRef;
 

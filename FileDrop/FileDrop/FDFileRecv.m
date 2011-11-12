@@ -35,6 +35,8 @@
     [super setIsFinished:finished];
     if (isFinished && ![[self curFileHash] isEqualToString:fileHash]) {
         [fileManagerRef.delegate fileManager:fileManagerRef errorHashInvalidForFile:self];
+    } else if (isFinished) {
+        NSLog(@"File finished (%@), hashes match!", filename);
     }
 }
 
