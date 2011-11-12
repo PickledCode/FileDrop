@@ -36,8 +36,9 @@
         [self willChangeValueForKey:@"isAccepted"];
         isAccepted = accepted;
         [self didChangeValueForKey:@"isAccepted"];
+        
         self.progressIndeterminate = !isAccepted;
-        self.progressAnimated = !isPaused && isAccepted;
+        //self.progressAnimated = !isPaused && isAccepted;
     }
 }
 
@@ -47,7 +48,8 @@
         [self willChangeValueForKey:@"isPaused"];
         isPaused = paused;
         [self didChangeValueForKey:@"isPaused"];
-        self.progressAnimated = !isPaused && isAccepted;
+        
+        //self.progressAnimated = !isPaused && isAccepted;
     }
 }
 
