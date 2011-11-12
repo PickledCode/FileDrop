@@ -31,6 +31,8 @@ static CGFloat const kGroupCellHeight = 17.0;
 {
     [super windowDidLoad];
     [self reloadContent];
+    
+    [IBtableView registerForDraggedTypes:[NSArray arrayWithObject:NSFilenamesPboardType]];
 }
 
 - (void)showWindow:(id)sender
@@ -93,6 +95,7 @@ static CGFloat const kGroupCellHeight = 17.0;
         [content addObjectsFromArray:[fileManager filesInSection:i]];
     }
     self.tableContent = content;
+    [IBtableView reloadData];
 }
 
 - (BOOL)tableView:(NSTableView *)tableView isGroupRow:(NSInteger)row {
@@ -113,4 +116,43 @@ static CGFloat const kGroupCellHeight = 17.0;
 - (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
     return ([[self.tableContent objectAtIndex:row] isKindOfClass:[NSString class]]) ? kGroupCellHeight : kMainCellHeight;
 }
+
+#pragma mark - DragDrop Delegates
+
+-(BOOL)tableView:(NSTableView *)tableView acceptDrop:(id<NSDraggingInfo>)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)dropOperation {
+        
+    NSArray *files = [[info draggingPasteboard] propertyListForType:NSFilenamesPboardType];
+    NSMutableArray *goodFiles = [NSMutableArray new];
+    
+    for (NSString *path in files) {
+        BOOL dirExists;
+        BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&dirExists];
+        
+        if (fileExists && !dirExists) {
+            [goodFiles addObject:path];
+        }
+    }
+    
+    NSLog(@"Files: %@", goodFiles);
+    return [goodFiles count] > 0;
+}
+-(NSDragOperation)tableView:(NSTableView *)tableView validateDrop:(id<NSDraggingInfo>)info proposedRow:(NSInteger)row proposedDropOperation:(NSTableViewDropOperation)dropOperation {
+    
+    [tableView setDropRow:-1 dropOperation:NSDragOperationCopy];
+    
+    NSArray *files = [[info draggingPasteboard] propertyListForType:NSFilenamesPboardType];
+    NSMutableArray *goodFiles = [NSMutableArray new];
+    for (NSString *path in files) {
+        BOOL dirExists;
+        BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&dirExists];
+        
+        if (fileExists && !dirExists) {
+            [goodFiles addObject:path];
+        }
+    }
+    [[info draggingPasteboard] setPropertyList:goodFiles forType:NSFilenamesPboardType];
+    
+    return [goodFiles count] > 0 ? NSDragOperationCopy : NSDragOperationNone;
+}
+
 @end

@@ -10,7 +10,7 @@
 #import "FDTokenWindowController.h"
 #import "FDFileManager.h"
 
-@interface FDTransferWindowController : NSWindowController <FDTokenWindowControllerDelegate, FDFileManagerDelegate>
+@interface FDTransferWindowController : NSWindowController <FDTokenWindowControllerDelegate, FDFileManagerDelegate, NSTableViewDataSource>
 
 + (id)transferWindowControllerWithTitle:(NSString*)title;
 - (void)reloadContent;
