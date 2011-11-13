@@ -136,6 +136,11 @@
                             NSUInteger newTrans = [[dDict objectForKey:@"bytesTransfered"] unsignedIntegerValue];
                             _file.bytesTransfered = newTrans;
                             
+                            NSString *tmpFileHash = [dDict objectForKey:@"tmpFileHash"];
+                            if (![tmpFileHash isEqualToString:FileHashPartial(_file.localPath, newTrans)]) {
+                                NSLog(@"Partial file hash does not equal for %lu", newTrans);
+                            }
+                            
                         }
                     }
                 }

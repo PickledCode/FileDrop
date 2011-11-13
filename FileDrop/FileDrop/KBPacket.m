@@ -73,8 +73,8 @@
     [dict setObject:@"file" forKey:@"type"];
     [dict setObject:@"update" forKey:@"action"];
     [dict setObject:[file fileID] forKey:@"id"];
-    [dict setObject:[NSNumber numberWithUnsignedInteger:[file bytesTransfered]] forKey:@"bytesTransfered"];
-    //[dict setObject:FileHash(file.localPath) forKey:@"tmpFileHash"];
+    [dict setObject:[NSNumber numberWithUnsignedInteger:file.bytesTransfered] forKey:@"bytesTransfered"];
+    [dict setObject:FileHashPartial(file.localPath, file.bytesTransfered) forKey:@"tmpFileHash"];
     return [self writeDataDict:dict toSocket:socket];
 }
 +(BOOL)writeAcceptFile:(FDFile*)file toSocket:(RSSocket*)socket {

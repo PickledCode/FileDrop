@@ -35,6 +35,7 @@
 
 @property (nonatomic, copy, readonly) NSString *fileID;
 @property (nonatomic, copy, readonly) NSString *localPath;
+@property (nonatomic, readonly) NSString *fileHash;
 
 @property (nonatomic, assign) BOOL isPaused;
 @property (nonatomic, assign) BOOL isAccepted;
