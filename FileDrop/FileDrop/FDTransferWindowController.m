@@ -59,7 +59,7 @@ static CGFloat const kGroupCellHeight = 17.0;
 {
     [NSApp endSheet:tokenWindowController.window];
     [tokenWindowController.window orderOut:nil];
-    [self.window orderOut:nil];
+    [self.window close];
 }
 
 
@@ -121,7 +121,7 @@ static CGFloat const kGroupCellHeight = 17.0;
 - (void)alertDidEnd:(NSAlert *)alert returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
 {
     [alert.window orderOut:nil];
-    [self.window orderOut:nil];
+    [self.window close];
 }
 
 - (void)fileManager:(FDFileManager *)fm willInsertFile:(FDFile *)file inSection:(NSUInteger)section {}

@@ -49,13 +49,13 @@
     }
     
     if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
-        // Resume file 
+        [file acceptToLocalPath:path];
         file.bytesTransfered = [[[NSFileManager defaultManager] attributesOfItemAtPath:path error:nil] fileSize];
         [KBPacket writeFileBytes:file toSocket:client.socket];
     } else {
         [[NSFileManager defaultManager] createFileAtPath:path contents:[NSData data] attributes:nil];
+        [file acceptToLocalPath:path];
     }
-    [file acceptToLocalPath:path];
     [KBPacket writeAcceptFile:file toSocket:client.socket];
 }
 -(void)declineFile:(FDFileRecv*)file {
