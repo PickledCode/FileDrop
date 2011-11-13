@@ -14,13 +14,19 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     sessionWindows = [NSMutableArray new];
-    //FDFileManager *fm = [[FDFileManager alloc] initWithToken:@"test" delegate:nil];
-    //NSLog(@"FM: %@", fm);
-    //[fm sendFileWithPath:@"/Users/ryansullivan/Desktop/FileDrop.zip"];
+    sessionAmount = 0;
     
-    FDTransferWindowController *transfer = [FDTransferWindowController transferWindowControllerWithTitle:@"Session 1"];
+    // On launch, new window
+    [self newSession:nil];
+}
+
+-(IBAction)newSession:(id)sender {
+    sessionAmount++;
+    
+    NSString *sessionTitle = [NSString stringWithFormat:@"Session %lu", sessionAmount];
+    FDTransferWindowController *transfer = [FDTransferWindowController transferWindowControllerWithTitle:sessionTitle];
+    
     [transfer showWindow:nil];
-    
     [sessionWindows addObject:transfer];
 }
 

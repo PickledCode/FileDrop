@@ -11,6 +11,9 @@
 
 @interface FDAppDelegate : NSObject <NSApplicationDelegate> {
     NSMutableArray *sessionWindows;
+    NSUInteger sessionAmount;
 }
+
+-(IBAction)newSession:(id)sender;
 
 @end
