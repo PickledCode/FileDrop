@@ -154,22 +154,23 @@
         }
         
         while (![[NSThread currentThread] isCancelled] && [socket isOpen]) {
-            if (!isConnected) {
-                [NSThread sleepForTimeInterval:0.25];
-                continue;
-            }
-            
-            NSArray *files = [fileManager activeFilesInSection:FDFM_FILESEND_SECTION];
-            NSUInteger uploadBuffer = FD_UPLOAD_BUFFER;
-            
-            if ([files count] < 1) {
-                [NSThread sleepForTimeInterval:0.2];
-                continue;
-            } else if ([files count] == 1) {
-                uploadBuffer *= 2;
-            }
-            
             @autoreleasepool {
+                if (!isConnected) {
+                    [NSThread sleepForTimeInterval:0.25];
+                    continue;
+                }
+                
+                NSArray *files = [fileManager activeFilesInSection:FDFM_FILESEND_SECTION];
+                NSUInteger uploadBuffer = FD_UPLOAD_BUFFER;
+                
+                if ([files count] < 1) {
+                    [NSThread sleepForTimeInterval:0.2];
+                    continue;
+                } else if ([files count] == 1) {
+                    uploadBuffer *= 2;
+                }
+                
+                
                 for (FDFile *file in files) {
                     NSFileHandle *handle = file.fileHandler;
                     [handle seekToFileOffset:file.bytesTransfered];
