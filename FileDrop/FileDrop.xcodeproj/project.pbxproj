@@ -456,8 +456,8 @@
 				2BEAFD791469E4E600F791BF /* en */,
 			);
 			name = MainMenu.xib;
-			path = ../../../RSully/FileDrop/FileDrop/FileDrop;
-			sourceTree = "<group>";
+			path = FileDrop;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXVariantGroup section */
 

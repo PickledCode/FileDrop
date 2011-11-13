@@ -20,6 +20,17 @@
     [self newSession:nil];
 }
 
+-(BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)flag {
+    NSLog(@"-appShouldHandleReopen... Flag: %d, sessionWindows: %lu", flag, [sessionWindows count]);
+    if (flag == NO) {
+        if ([sessionWindows count] < 1) {
+            [self newSession:nil];
+        }
+    }
+    return YES;
+}
+
+
 -(IBAction)newSession:(id)sender {
     sessionAmount++;
     
