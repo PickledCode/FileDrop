@@ -18,12 +18,16 @@
 
 
 // In bytes:
-#define FD_HASH_FileHashDefaultChunkSizeForReadingData 4096
+#define FD_HASH_FileChunkSize 4096
 //#define RKRandom(x) (arc4random() % ((NSUInteger)(x) + 1))
 
 
 NSString* randomString(void);
+
 NSString* FileHash(NSString *path);
-CFStringRef FileMD5HashCreateWithPath(CFStringRef filePath, size_t chunkSizeForReadingData);
+NSString* FileHashPartial(NSString *path, NSUInteger readLength);
+
+CFStringRef FilePartialMD5HashCreateWithPath(CFStringRef filePath, NSUInteger readUntil, NSUInteger chunkSize);
+CFStringRef FileMD5HashCreateWithPath(CFStringRef filePath, NSUInteger chunkSize);
 
 #endif

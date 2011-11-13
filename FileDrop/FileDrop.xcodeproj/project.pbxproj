@@ -192,7 +192,6 @@
 				2BEAFE84146B13D900F791BF /* Main Table */,
 				2BEAFEAB146B3C0A00F791BF /* Other UI */,
 				2BEAFD801469E5C600F791BF /* KeyedBits */,
-				2BEAFD781469E4E600F791BF /* MainMenu.xib */,
 				2BEAFD6A1469E4E600F791BF /* Supporting Files */,
 			);
 			path = FileDrop;
@@ -310,6 +309,7 @@
 		2BEAFEAB146B3C0A00F791BF /* Other UI */ = {
 			isa = PBXGroup;
 			children = (
+				2BEAFD781469E4E600F791BF /* MainMenu.xib */,
 			);
 			name = "Other UI";
 			path = ../../../../twitter/twui/lib;
@@ -456,6 +456,7 @@
 				2BEAFD791469E4E600F791BF /* en */,
 			);
 			name = MainMenu.xib;
+			path = ../../../RSully/FileDrop/FileDrop/FileDrop;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -520,7 +521,9 @@
 				GCC_PREFIX_HEADER = "FileDrop/FileDrop-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
 				INFOPLIST_FILE = "FileDrop/FileDrop-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -537,7 +540,9 @@
 				GCC_PREFIX_HEADER = "FileDrop/FileDrop-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = "FileDrop/FileDrop-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
