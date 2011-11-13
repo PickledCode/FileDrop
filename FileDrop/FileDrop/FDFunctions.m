@@ -49,7 +49,9 @@ CFStringRef FilePartialMD5HashCreateWithPath(CFStringRef filePath, NSUInteger re
         uint8_t buffer[readChunk];
         CFIndex readBytesCount = CFReadStreamRead(readStream, 
                                                   (UInt8 *)buffer, 
-                                                  (CFIndex)sizeof(buffer));
+                                                  readChunk);
+        
+        readLength += readBytesCount;
         if (readBytesCount == -1) break;
         if (readBytesCount == 0) {
             hasMoreData = false;
