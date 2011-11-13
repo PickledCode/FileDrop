@@ -44,12 +44,14 @@ static CGFloat const kGroupCellHeight = 17.0;
 }
 
 
+
 #pragma mark - FDTokenWindowController
 
 - (void)tokenWindowController:(FDTokenWindowController*)controller clickedOKWithToken:(NSString*)token
 {
     [NSApp endSheet:tokenWindowController.window];
     [tokenWindowController.window orderOut:nil];
+    self.window.title = [self.window.title stringByAppendingFormat:@" (%@)", token];
     fileManager = [[FDFileManager alloc] initWithToken:token delegate:self];
 }
 

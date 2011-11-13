@@ -27,7 +27,22 @@
     FDTransferWindowController *transfer = [FDTransferWindowController transferWindowControllerWithTitle:sessionTitle];
     
     [transfer showWindow:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(windowClosed:) 
+                                                 name:NSWindowWillCloseNotification 
+                                               object:transfer.window];
     [sessionWindows addObject:transfer];
+}
+
+-(void)windowClosed:(NSNotification*)notif {
+    NSWindow *sender = [notif object];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self 
+                                                    name:NSWindowWillCloseNotification 
+                                                  object:sender];
+    
+    NSWindowController *controller = [sender windowController];
+    [sessionWindows removeObject:controller];
 }
 
 @end
